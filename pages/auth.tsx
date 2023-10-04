@@ -27,7 +27,7 @@ export default function Auth() {
       </main>
       <small className="max-w-sm text-center">
         By signing up or creating an account, you acknowledge that you have read and
-        understood our{" "}
+        understood our
         <Link href={ROUTES.terms} className="underline hover:text-primary opacity-70">
           terms &amp; conditions
         </Link>
