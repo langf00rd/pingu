@@ -2,26 +2,34 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  @apply text-[#666];
+}
+
+* {
+  @apply p-0 m-0 box-border;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply text-black font-[600];
+}
+
+.dotted-bg {
+  min-height: 100vh;
+  background-image: radial-gradient(
+      #5e00f631 0.9500000000000001px,
+      transparent 0.9500000000000001px
+    ),
+    radial-gradient(#5e00f631 0.9500000000000001px, #ffffff 0.9500000000000001px);
+  background-size: 38px 38px;
+  background-position: 0 0, 19px 19px;
+}
+
+::selection {
+  @apply bg-gray-100;
 }
