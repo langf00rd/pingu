@@ -9,6 +9,7 @@ import { useStore } from "@/config/store";
 import Aside from "../Aside";
 import { AnimatePresence } from "framer-motion";
 import { ReactNode } from "react";
+import CreateSiteDialog from "../CreateSiteDialog";
 
 export default function Header(props: {
   title?: string;
@@ -36,11 +37,7 @@ export default function Header(props: {
                 </motion.div>
               )}
             </AnimatePresence>
-            {pathname !== ROUTES.write && (
-              <Link href={ROUTES.write}>
-                <Button className="w-full">Write a post</Button>
-              </Link>
-            )}
+            {!pathname.split("/").includes("write") && <CreateSiteDialog />}
           </div>
           <UserButton />
         </div>

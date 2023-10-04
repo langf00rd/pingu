@@ -4,7 +4,11 @@ import { ROUTES } from "@/routes";
 import { Badge } from "../ui/Badge";
 import Image from "next/image";
 
-export default function BlogPostCard(props: { index: number }): JSX.Element {
+export default function BlogPostCard(props: {
+  index: number;
+  title: string;
+  image: string;
+}): JSX.Element {
   return (
     <motion.li
       initial={{ opacity: 0 }}
@@ -17,7 +21,7 @@ export default function BlogPostCard(props: { index: number }): JSX.Element {
           <div className="flex-1 relative">
             <Badge className="w-max m-3 absolute top-0 left-0">published 🎉</Badge>
             <Image
-              src=""
+              src={props.image}
               className="bg-gray-100 object-cover h-[200px] w-full rounded-t-2xl md:rounded-t-none md:rounded-l-2xl"
               width={200}
               height={200}
@@ -25,10 +29,8 @@ export default function BlogPostCard(props: { index: number }): JSX.Element {
             />
           </div>
           <div className="flex-1 flex flex-col justify-center space-y-2 p-5">
-            <h3 className="text-xl text-black group-hover:text-primary">
-              How the web works
-            </h3>
-            <p>here is a sample text description</p>
+            <h3 className="text-xl text-black group-hover:text-primary">{props.title}</h3>
+            {/* <p>here is a sample text description</p> */}
           </div>
         </div>
       </Link>

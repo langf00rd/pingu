@@ -58,7 +58,7 @@ export default function Themes(): JSX.Element {
           onClick={() => setSelectedTheme(theme.name)}
         >
           <Image
-            src=""
+            src="/assets/test-3.png"
             className="bg-gray-100 object-cover h-[200px] w-full rounded-t-2xl"
             width={200}
             height={300}
