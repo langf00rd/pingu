@@ -9,7 +9,7 @@ import { useRouter } from "next/router";
 import Footer from "../Footer";
 
 const NAV_LINKS = [
-  { label: "Projects", page: "/dashboard", icon: <Folder /> },
+  { label: "My blogs", page: "/dashboard", icon: <Folder /> },
   { label: "Settings", page: "/settings", icon: <Settings /> },
   { label: "Docs", page: "/documentation", icon: <BookOpenIcon /> },
 ];
@@ -27,7 +27,7 @@ export default function Aside(): JSX.Element {
           animate={{ x: 0 }}
           exit={{ x: -350 }}
           transition={{ type: "just" }}
-          className="w-[300px] fixed top-0 left-0 h-screen flex flex-col justify-between backdrop-blur-[8px]	 bg-[#ffffffe0] border-r shadow-xl p-5 z-20"
+          className="w-[300px] fixed top-0 left-0 h-screen flex flex-col justify-between bg-white border-r shadow-xl p-5 z-20"
         >
           <div className="space-y-20">
             <div className="flex items-center justify-between">
