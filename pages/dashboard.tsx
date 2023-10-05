@@ -3,14 +3,14 @@ import CreateSiteDialog from "@/components/CreateSiteDialog";
 import Header from "@/components/Header";
 import Loader from "@/components/Loader";
 import { Button } from "@/components/ui/Button";
-import { Blog } from "@/types";
+import { IBlog } from "@/types";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
 export default function Dashboard(): JSX.Element {
   const { isLoading, isError, data } = useQuery(["fetch user blogs"], async () => {
     const blog = await axios.get("/api/blog/fetch-all");
-    return (blog.data.data as Blog[]) ?? [];
+    return (blog.data.data as IBlog[]) ?? [];
   });
 
   if (isLoading) {
@@ -39,7 +39,7 @@ export default function Dashboard(): JSX.Element {
         <Header title="My blogs" />
         {data.length > 0 ? (
           <ul className="grid md:grid-cols-2 grid-cols-1 gap-5 p-5 max-w-4xl mx-auto">
-            {data.map((blog: Blog, index: number) => (
+            {data.map((blog: IBlog, index: number) => (
               <BlogCard key={index} data={blog} />
             ))}
           </ul>
