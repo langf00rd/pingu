@@ -1,7 +1,7 @@
+import BlogCard from "@/components/BlogCard";
 import CreateSiteDialog from "@/components/CreateSiteDialog";
 import Header from "@/components/Header";
 import Loader from "@/components/Loader";
-import SiteCard from "@/components/SiteCard";
 import { Button } from "@/components/ui/Button";
 import { Blog } from "@/types";
 import { useQuery } from "@tanstack/react-query";
@@ -26,7 +26,9 @@ export default function Dashboard(): JSX.Element {
     return (
       <div className="dotted-bg">
         <Header title="My blogs" />
-        <p>An error occured</p>
+        <p className="text-center py-20">
+          An error occured. Refresh the page and try again
+        </p>
       </div>
     );
   }
@@ -38,7 +40,7 @@ export default function Dashboard(): JSX.Element {
         {data.length > 0 ? (
           <ul className="grid md:grid-cols-2 grid-cols-1 gap-5 p-5 max-w-4xl mx-auto">
             {data.map((blog: Blog, index: number) => (
-              <SiteCard key={index} data={blog} />
+              <BlogCard key={index} data={blog} />
             ))}
           </ul>
         ) : (

@@ -30,7 +30,6 @@ export default function BlogPostCard(props: {
           </div>
           <div className="flex-1 flex flex-col justify-center space-y-2 p-5">
             <h3 className="text-xl text-black group-hover:text-primary">{props.title}</h3>
-            {/* <p>here is a sample text description</p> */}
           </div>
         </div>
       </Link>

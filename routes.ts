@@ -3,8 +3,9 @@ export const ROUTES = {
   auth: "/auth",
   write: "/write",
   terms: "/terms",
-  site: "/site",
+  blog: "/blog",
   dashboard: "/dashboard",
   signIn: "/sign-in",
   signUp: "/sign-up",
+  socials: { twitter: "https://x.com/pingulabs_" },
 };

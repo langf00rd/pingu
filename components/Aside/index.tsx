@@ -7,6 +7,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import Footer from "../Footer";
+import CreateSiteDialog from "../CreateSiteDialog";
 
 const NAV_LINKS = [
   { label: "My blogs", page: "/dashboard", icon: <Folder /> },
@@ -67,9 +68,7 @@ export default function Aside(): JSX.Element {
             </nav>
           </div>
           <div>
-            <Link href={`${ROUTES.write}/${Date.now()}`}>
-              <Button className="w-full">Write a post</Button>
-            </Link>
+            <CreateSiteDialog />
             <Footer />
           </div>
         </motion.aside>

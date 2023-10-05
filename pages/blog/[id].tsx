@@ -2,10 +2,10 @@ import Header from "@/components/Header";
 import { Drafts } from "@/components/tabs/Drafts";
 import { Button } from "@/components/ui/Button";
 import { useState } from "react";
-import { SiteSettings } from "@/components/tabs/SiteSettings";
+import { BlogSettings } from "@/components/tabs/BlogSettings";
 import Footer from "@/components/Footer";
 
-const TABS = ["Drafts", "Site settings"];
+const TABS = ["Drafts", "Analytics", "Settings"];
 
 export default function Site(): JSX.Element {
   const [selectedTab, setSelectedTab] = useState(TABS[0]);
@@ -14,8 +14,8 @@ export default function Site(): JSX.Element {
     switch (selectedTab) {
       case TABS[0]:
         return <Drafts />;
-      case TABS[1]:
-        return <SiteSettings />;
+      case TABS[2]:
+        return <BlogSettings />;
       default:
         return <></>;
     }
