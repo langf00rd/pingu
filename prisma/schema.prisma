@@ -10,6 +10,7 @@ datasource db {
 
 model Blog {
   id          String  @id @default(auto()) @map("_id") @db.ObjectId
+  uid         String
   title       String
   subdomain   String
   owner       String
