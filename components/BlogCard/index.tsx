@@ -2,9 +2,9 @@ import Link from "next/link";
 import { BarChart, Globe, Link2 } from "lucide-react";
 import { ROUTES } from "@/routes";
 import Image from "next/image";
-import { Blog } from "@/types";
+import { IBlog } from "@/types";
 
-export default function BlogCard(props: { data: Blog }): JSX.Element {
+export default function BlogCard(props: { data: IBlog }): JSX.Element {
   return (
     <li className="group">
       <div className="bg-white p-5 rounded-2xl space-y-10 border group-hover:shadow-none shadow-md hover:scale-[1.03] transition-all block hover:bg-transparent peer relative">
@@ -39,7 +39,7 @@ export default function BlogCard(props: { data: Blog }): JSX.Element {
           </li>
           <li>
             <Link
-              href={`https://${props.data.subdomain}.pingu.sh`}
+              href={`${window.location.origin}/${props.data.subdomain}`}
               target="_blank"
               rel="noreferrer"
               className="flex items-center space-x-1 text-sm hover:text-primary transition-colors"
