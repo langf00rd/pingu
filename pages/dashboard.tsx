@@ -1,19 +1,57 @@
+import CreateSiteDialog from "@/components/CreateSiteDialog";
 import Header from "@/components/Header";
+import Loader from "@/components/Loader";
 import SiteCard from "@/components/SiteCard";
+import { Button } from "@/components/ui/Button";
+import { Blog } from "@/types";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 
 export default function Dashboard(): JSX.Element {
-  return (
-    <div className="dotted-bg">
-      <Header title="My blogs" />
-      <div>
-        <ul className="grid md:grid-cols-2 grid-cols-1 gap-5 p-5 max-w-4xl mx-auto">
-          {["Typescript blog", "Random blog site", "Acme's blog", "Hello world"].map(
-            (i) => (
-              <SiteCard title={i} key={i} />
-            )
-          )}
-        </ul>
+  const { isLoading, isError, data } = useQuery(["fetch user blogs"], async () => {
+    const blog = await axios.get("/api/blog/fetch-all");
+    return (blog.data.data as Blog[]) ?? [];
+  });
+
+  if (isLoading) {
+    return (
+      <div className="dotted-bg">
+        <Header title="My blogs" />
+        <Loader />
       </div>
-    </div>
-  );
+    );
+  }
+
+  if (isError) {
+    return (
+      <div className="dotted-bg">
+        <Header title="My blogs" />
+        <p>An error occured</p>
+      </div>
+    );
+  }
+
+  if (data) {
+    return (
+      <div className="dotted-bg">
+        <Header title="My blogs" />
+        {data.length > 0 ? (
+          <ul className="grid md:grid-cols-2 grid-cols-1 gap-5 p-5 max-w-4xl mx-auto">
+            {data.map((blog: Blog, index: number) => (
+              <SiteCard key={index} data={blog} />
+            ))}
+          </ul>
+        ) : (
+          <div className="flex items-center justify-center flex-col h-[300px] gap-3">
+            <p className="text-2xl">It&apos;s quiet here. You seem to have no blogs</p>
+            <CreateSiteDialog>
+              <Button variant="outline">Create a blog</Button>
+            </CreateSiteDialog>
+          </div>
+        )}
+      </div>
+    );
+  }
+
+  return <></>;
 }

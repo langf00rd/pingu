@@ -1,9 +1,7 @@
 import { motion } from "framer-motion";
-import { ROUTES } from "@/routes";
-import { UserButton, useUser } from "@clerk/nextjs";
+import { UserButton } from "@clerk/nextjs";
 import { Menu } from "lucide-react";
 import { Button } from "../ui/Button";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import { useStore } from "@/config/store";
 import Aside from "../Aside";
@@ -15,10 +13,9 @@ export default function Header(props: {
   title?: string;
   children?: ReactNode;
 }): JSX.Element {
+  const { pathname } = useRouter();
   const showMainAside = useStore((state) => state.showMainAside);
   const setShowMainAside = useStore((state) => state.setShowMainAside);
-  const { pathname } = useRouter();
-
   return (
     <>
       <header className="h-[70px] w-screen fixed top-0 left-0 z-10">

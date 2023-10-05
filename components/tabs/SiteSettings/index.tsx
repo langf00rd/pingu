@@ -18,25 +18,17 @@ const TABS = [
 const THEMES: { name: string; image: string; isPremium?: boolean }[] = [
   {
     name: "Astral",
-    image: "/",
+    image: "/assets/themes/1.png",
     isPremium: true,
   },
   {
     name: "Demo",
-    image: "/",
+    image: "/assets/themes/2.png",
   },
   {
     name: "Super",
-    image: "/",
+    image: "/assets/themes/3.png",
     isPremium: true,
-  },
-  {
-    name: "Dynamo",
-    image: "/",
-  },
-  {
-    name: "Prestige",
-    image: "/",
   },
 ];
 
@@ -58,10 +50,10 @@ export default function Themes(): JSX.Element {
           onClick={() => setSelectedTheme(theme.name)}
         >
           <Image
-            src="/assets/test-3.png"
-            className="bg-gray-100 object-cover h-[200px] w-full rounded-t-2xl"
+            src={theme.image}
+            className="bg-gray-100 object-cover w-full rounded-t-2xl"
             width={200}
-            height={300}
+            height={500}
             alt="..."
           />
           <div className="p-3 flex items-center justify-between">
