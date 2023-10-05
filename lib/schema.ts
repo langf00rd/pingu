@@ -1,6 +1,7 @@
 import { z } from "zod";
 export const blogSchema = z.object({
   title: z.string(),
+  uid: z.string(),
   subdomain: z.string(),
   owner: z.string(),
   banner: z.string().optional(),

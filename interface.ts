@@ -5,3 +5,8 @@ export interface StoreState extends StoreAction {
 export interface StoreAction {
   setShowMainAside: (mainView: StoreState["showMainAside"]) => void;
 }
+
+export interface IWindow {
+  width: number;
+  height: number;
+}
