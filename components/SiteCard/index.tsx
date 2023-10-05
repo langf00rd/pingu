@@ -1,14 +1,14 @@
 import Link from "next/link";
-import { Badge } from "../ui/Badge";
-import { BarChart, Globe, Link2 } from "lucide-react";
+import { BarChart, Globe } from "lucide-react";
 import { ROUTES } from "@/routes";
 import Image from "next/image";
+import { Blog } from "@/types";
 
-export default function SiteCard(props: { title: string }): JSX.Element {
+export default function SiteCard(props: { data: Blog }): JSX.Element {
   return (
     <li className="group">
       <Link
-        href={`${ROUTES.site}/${Date.now()}`}
+        href={`${ROUTES.site}/${props.data.uid}`}
         className="bg-white p-5 rounded-2xl space-y-10 border group-hover:shadow-none shadow-md hover:scale-[1.03] transition-all block hover:bg-transparent peer"
       >
         <div className="flex items-center space-x-3">
@@ -21,9 +21,9 @@ export default function SiteCard(props: { title: string }): JSX.Element {
           />
           <div>
             <p className="md:text-md text-black group-hover:text-primary">
-              {props.title}
+              {props.data.title}
             </p>
-            <small>james.pingu.sh</small>
+            <small>{props.data.subdomain}.pingu.sh</small>
           </div>
         </div>
         <ul className="flex items-center justify-between group-hover:text-primary">

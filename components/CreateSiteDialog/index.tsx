@@ -14,7 +14,7 @@ import axios from "axios";
 import { toFormikValidationSchema } from "zod-formik-adapter";
 import { blogSchema } from "@/lib/schema";
 import { toast } from "sonner";
-import { useState } from "react";
+import { ReactNode, useState } from "react";
 import { useUser } from "@clerk/nextjs";
 import { DialogDescription } from "@radix-ui/react-dialog";
 import useWindow from "@/hooks/useWindow";
@@ -22,6 +22,7 @@ import Confetti from "react-confetti";
 import { Linkedin, Twitter } from "lucide-react";
 import Link from "next/link";
 import * as suuid from "short-uuid";
+import { ROUTES } from "@/routes";
 
 interface Values {
   title: string;
@@ -30,7 +31,9 @@ interface Values {
   owner: string;
 }
 
-export default function CreateSiteDialog(): JSX.Element {
+const uid = suuid.generate();
+
+export default function CreateSiteDialog(props: { children?: ReactNode }): JSX.Element {
   const { width, height } = useWindow();
   const { user } = useUser();
   const [loading, setLoading] = useState(false);
@@ -56,7 +59,7 @@ export default function CreateSiteDialog(): JSX.Element {
       {isBlogCreated && <Confetti width={width} height={height} />}
       <Dialog onOpenChange={() => setIsBlogCreated(false)}>
         <DialogTrigger asChild>
-          <Button>Create a blog</Button>
+          {props?.children ?? <Button>Create a blog</Button>}
         </DialogTrigger>
         <DialogContent className="p-5 bg-white">
           <DialogHeader>
@@ -77,7 +80,7 @@ export default function CreateSiteDialog(): JSX.Element {
               initialValues={{
                 title: "",
                 subdomain: "",
-                uid: suuid.generate(),
+                uid: uid,
                 owner: "random-user-id",
               }}
             >
@@ -147,7 +150,9 @@ export default function CreateSiteDialog(): JSX.Element {
                 </li>
               </ul>
               <DialogFooter>
-                <Button className="w-max">Next</Button>
+                <Link href={`${ROUTES.site}/${uid}`}>
+                  <Button className="w-max">Next</Button>
+                </Link>
               </DialogFooter>
             </>
           )}
