@@ -22,7 +22,7 @@ export default function BlogPostCard(props: {
             <Badge className="w-max m-3 absolute top-0 left-0">published 🎉</Badge>
             <Image
               src={props.image}
-              className="bg-gray-100 object-cover h-[200px] w-full rounded-t-2xl md:rounded-t-none md:rounded-l-2xl"
+              className="bg-gray-100 object-cover h-[200px] w-full rounded-t-2xl md:rounded-l-2xl"
               width={200}
               height={200}
               alt="..."

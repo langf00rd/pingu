@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { DashboardWidthConstraint } from "@/layouts/widthConstraint";
+import { DashboardWidthConstraint } from "@/layouts/dashboardWidthConstraint";
 import { useState } from "react";
 import { Drafts } from "../Drafts";
 import Image from "next/image";
