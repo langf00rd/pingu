@@ -17,7 +17,7 @@ h4,
 h5,
 h6,
 b {
-  @apply text-black font-[600];
+  @apply text-black font-[600] tracking-tight;
 }
 
 .dotted-bg {

@@ -1,42 +1,15 @@
 import { motion } from "framer-motion";
 import { DashboardWidthConstraint } from "@/layouts/dashboardWidthConstraint";
 import { useState } from "react";
-import { Drafts } from "../Drafts";
 import Image from "next/image";
-import Footer from "@/components/Footer";
 import { Badge } from "@/components/ui/Badge";
-import { Globe, PaintBucketIcon, Workflow } from "lucide-react";
-
-const TABS = [
-  {
-    label: "Theme",
-    icon: <PaintBucketIcon size={18} />,
-  },
-  { label: "Domains", icon: <Globe size={18} /> },
-  { label: "Integration", icon: <Workflow size={18} /> },
-];
-const THEMES: { name: string; image: string; isPremium?: boolean }[] = [
-  {
-    name: "Astral",
-    image: "/assets/themes/1.png",
-    isPremium: true,
-  },
-  {
-    name: "Demo",
-    image: "/assets/themes/2.png",
-  },
-  {
-    name: "Super",
-    image: "/assets/themes/3.png",
-    isPremium: true,
-  },
-];
+import { BLOG_THEMES, BLOG_SETTINGS_TABS } from "@/lib/ui/nav";
 
 export default function Themes(): JSX.Element {
-  const [selectedTheme, setSelectedTheme] = useState(THEMES[0].name);
+  const [selectedTheme, setSelectedTheme] = useState(BLOG_THEMES[0].name);
   return (
     <ul className="grid grid-cols-2 gap-5">
-      {THEMES.map((theme, index) => (
+      {BLOG_THEMES.map((theme, index) => (
         <motion.li
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -66,11 +39,11 @@ export default function Themes(): JSX.Element {
   );
 }
 
-export function SiteSettings(): JSX.Element {
-  const [selectedTab, setSelectedTab] = useState(TABS[0]);
+export function BlogSettings(): JSX.Element {
+  const [selectedTab, setSelectedTab] = useState(BLOG_SETTINGS_TABS[0]);
   function tabViews(): JSX.Element {
     switch (selectedTab) {
-      case TABS[0]:
+      case BLOG_SETTINGS_TABS[0]:
         return <Themes />;
       default:
         return <p>:eyes:</p>;
@@ -81,7 +54,7 @@ export function SiteSettings(): JSX.Element {
     <DashboardWidthConstraint>
       <div className="flex items-start md:flex-row flex-col md:space-x-10">
         <ul className="md:grid flex gap-5 flex-1 md:sticky md:top-[100px] w-full mb-5">
-          {TABS.map((tab, index) => (
+          {BLOG_SETTINGS_TABS.map((tab, index) => (
             <li
               key={index}
               onClick={() => setSelectedTab(tab)}

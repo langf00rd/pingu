@@ -59,7 +59,7 @@ export default function CreateSiteDialog(props: { children?: ReactNode }): JSX.E
       {isBlogCreated && <Confetti width={width} height={height} />}
       <Dialog onOpenChange={() => setIsBlogCreated(false)}>
         <DialogTrigger asChild>
-          {props?.children ?? <Button>Create a blog</Button>}
+          {props?.children ?? <Button className="w-full">Create a blog</Button>}
         </DialogTrigger>
         <DialogContent className="p-5 bg-white">
           <DialogHeader>
@@ -150,7 +150,7 @@ export default function CreateSiteDialog(props: { children?: ReactNode }): JSX.E
                 </li>
               </ul>
               <DialogFooter>
-                <Link href={`${ROUTES.site}/${uid}`}>
+                <Link href={`${ROUTES.blog}/${uid}`}>
                   <Button className="w-max">Next</Button>
                 </Link>
               </DialogFooter>
