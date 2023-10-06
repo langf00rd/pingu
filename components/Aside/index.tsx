@@ -15,7 +15,7 @@ const NAV_LINKS = [
   { label: "Docs", page: "/documentation", icon: <BookOpenIcon /> },
 ];
 
-export default function Aside(): JSX.Element {
+export default function Aside(props: { show?: boolean }): JSX.Element {
   const { pathname } = useRouter();
   const showMainAside = useStore((state) => state.showMainAside);
   const setShowMainAside = useStore((state) => state.setShowMainAside);

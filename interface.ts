@@ -1,4 +1,4 @@
-import { IBlog } from "./types";
+import { IBlog, IPost } from "./types";
 
 export interface StoreState extends StoreAction {
   showMainAside: boolean;
@@ -14,5 +14,5 @@ export interface IWindow {
 }
 
 export interface BlogProps extends IBlog {
-  posts: [];
+  posts: IPost[];
 }

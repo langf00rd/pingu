@@ -11,7 +11,7 @@ export default function BlogCard(props: { data: IBlog }): JSX.Element {
         <div className="relative">
           <Link
             className="flex w-full space-x-3"
-            href={`${ROUTES.blog}/${props.data.uid}`}
+            href={`${ROUTES.blog}/${props.data.subdomain}/${props.data.uid}`}
           >
             <Image
               src="/assets/blob.webp"

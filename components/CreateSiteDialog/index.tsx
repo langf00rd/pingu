@@ -40,7 +40,6 @@ export default function CreateSiteDialog(props: { children?: ReactNode }): JSX.E
   const [isBlogCreated, setIsBlogCreated] = useState(false);
 
   async function onSubmitForm(values: Values) {
-    if (!user) return;
     setLoading(true);
     await axios
       .post("/api/blog/create", values)

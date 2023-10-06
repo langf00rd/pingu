@@ -18,3 +18,23 @@ model Blog {
   theme_id    String?
   theme_color String?
 }
+
+model Post {
+  id           String      @id @default(auto()) @map("_id") @db.ObjectId
+  url          String
+  title        String
+  parent_id    String
+  subdomain    String
+  owner        String
+  content_html String
+  content_json JSONContent
+  banner       String?
+}
+
+type JSONContent {
+  type    String?
+  content Json[]
+  attrs   Json?
+  marks   Json?
+  text    String?
+}
