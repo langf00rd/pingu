@@ -9,13 +9,9 @@ import {
 } from "../ui/Dialog";
 import { Field, Form, Formik } from "formik";
 import { Label } from "../ui/Label";
-import DropZone from "../DropZone";
 import axios from "axios";
-import { toFormikValidationSchema } from "zod-formik-adapter";
-import { blogSchema } from "@/lib/schema";
 import { toast } from "sonner";
 import { ReactNode, useState } from "react";
-import { useUser } from "@clerk/nextjs";
 import { DialogDescription } from "@radix-ui/react-dialog";
 import useWindow from "@/hooks/useWindow";
 import Confetti from "react-confetti";
@@ -58,8 +54,7 @@ export default function CreateSiteDialog(props: { children?: ReactNode }): JSX.E
         setIsBlogCreated(true);
       })
       .catch((error) => {
-        console.log(error);
-        toast.error(error.message);
+        toast.error(error.response.data.error ?? error.message);
       });
     setLoading(false);
   }
