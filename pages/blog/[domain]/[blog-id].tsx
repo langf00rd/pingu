@@ -10,20 +10,24 @@ import { Posts } from "@/components/tabs/Posts/[domain]";
 const TABS = ["Drafts", "Analytics", "Settings"];
 
 export async function getServerSideProps(context: BlogServerSideProps) {
+  console.log(context.params);
   const posts = await prisma.post.findMany({
     where: {
       parent_id: {
-        equals: context.params.id,
+        equals: context.params["blog-id"],
       },
     },
   });
+  console.log(posts);
   return {
-    props: { posts },
+    props: { posts: JSON.parse(JSON.stringify(posts)) },
   };
 }
 
 export default function Site(props: { posts: IPost[] }): JSX.Element {
   const [selectedTab, setSelectedTab] = useState(TABS[0]);
+
+  console.log(props);
 
   function tabViews(): JSX.Element {
     switch (selectedTab) {

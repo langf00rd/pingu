@@ -23,32 +23,43 @@ import { Linkedin, Twitter } from "lucide-react";
 import Link from "next/link";
 import * as suuid from "short-uuid";
 import { ROUTES } from "@/routes";
+import { IBlog } from "@/types";
+import { generate12ByteID } from "@/lib/utils";
 
 interface Values {
-  title: string;
-  subdomain: string;
-  uid: string;
-  owner: string;
+  name: string;
+  sub_domain: string;
 }
 
 const uid = suuid.generate();
 
 export default function CreateSiteDialog(props: { children?: ReactNode }): JSX.Element {
   const { width, height } = useWindow();
-  const { user } = useUser();
   const [loading, setLoading] = useState(false);
   const [isBlogCreated, setIsBlogCreated] = useState(false);
 
   async function onSubmitForm(values: Values) {
+    const body = { ...values } as IBlog;
+    body.id = generate12ByteID();
+    body.created_at = new Date().toISOString();
+    body.meta = {
+      title: values.name,
+      image: "random-image-here",
+    };
+
+    console.log(body);
+
     setLoading(true);
     await axios
-      .post("/api/blog/create", values)
+      .post("/api/blog/create", body)
       .then((res) => {
+        console.log(res);
         toast.success(res.data.message);
         setIsBlogCreated(true);
       })
       .catch((error) => {
-        toast.error(error.response.data.error ?? error.message);
+        console.log(error);
+        toast.error(error.message);
       });
     setLoading(false);
   }
@@ -74,31 +85,29 @@ export default function CreateSiteDialog(props: { children?: ReactNode }): JSX.E
           {!isBlogCreated ? (
             <Formik
               validateOnChange
-              validationSchema={toFormikValidationSchema(blogSchema)}
+              // validationSchema={toFormikValidationSchema(blogSchema)}
               onSubmit={(values: Values) => onSubmitForm(values)}
               initialValues={{
-                title: "",
-                subdomain: "",
-                uid: uid,
-                owner: "random-user-id",
+                name: "",
+                sub_domain: "",
               }}
             >
               {({ touched, errors }) => (
                 <Form className="space-y-5">
                   <div className="space-y-1">
-                    <Label htmlFor="title">Give your blog a name</Label>
+                    <Label htmlFor="name">Give your blog a name</Label>
                     <Field
-                      id="title"
-                      name="title"
+                      id="name"
+                      name="name"
                       placeholder="My personal blog"
                       className={`w-full outline-none bg-gray-50 p-2 rounded-md border transition-colors ${
-                        touched.title && errors.title && "border-red-300"
+                        touched.name && errors.name && "border-red-300"
                       }`}
                     />
                   </div>
                   <div className="space-y-1">
                     <div className="mb-3 space-y-1">
-                      <Label htmlFor="subdomain">Your subdomain</Label>
+                      <Label htmlFor="sub_domain">Your sub_domain</Label>
                       <small className="block">
                         You can always move your blog to a custom domain for free when you
                         are ready
@@ -106,29 +115,29 @@ export default function CreateSiteDialog(props: { children?: ReactNode }): JSX.E
                     </div>
                     <div
                       className={`w-full outline-none bg-gray-50 p-2 rounded-md border transition-colors flex items-center  ${
-                        touched.subdomain && errors.subdomain && "border-red-300"
+                        touched.sub_domain && errors.sub_domain && "border-red-300"
                       }`}
                     >
                       <Field
-                        id="subdomain"
+                        id="sub_domain"
                         className="w-full bg-transparent outline-none text-primary"
-                        name="subdomain"
+                        name="sub_domain"
                         placeholder="john"
                       />
                       <p>.pingu.sh</p>
                     </div>
                   </div>
-                  <div className="space-y-1">
+                  {/* <div className="space-y-1">
                     <Label htmlFor="title">Blog photo</Label>
                     <DropZone
                       onUploadedFile={async () => console.log("hi mom!")}
                       fieldName={""}
                       value={""}
                     />
-                  </div>
+                  </div> */}
                   <DialogFooter>
                     <Button disabled={loading} type="submit">
-                      Create blog
+                      {loading ? "loading..." : "Create blog"}
                     </Button>
                   </DialogFooter>
                 </Form>

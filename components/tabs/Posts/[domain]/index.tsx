@@ -12,26 +12,25 @@ export function Posts(props: { posts: IPost[] }): JSX.Element {
   console.log(params);
   return (
     <WidthConstraint>
-      {props.posts.length > 0 ? (
+      {props.posts.length > 0 && (
         <ul className="grid gap-5">
           {props.posts.map((post, index) => (
             <PostCard
-              page={`${ROUTES.write}/${params?.domain}/${params?.id}/${post.id}`}
+              page={`${ROUTES.write}/${params.domain}/${params["blog-id"]}/${post.id}`}
               data={post}
               index={index}
               key={index}
             />
           ))}
         </ul>
-      ) : (
-        <>
-          <Link
-            href={`${ROUTES.write}/${params?.domain}/${params?.id}/${generate12ByteID()}`}
-          >
-            <Button>Write a post</Button>
-          </Link>
-        </>
       )}
+      <Link
+        href={`${ROUTES.write}/${params.domain}/${
+          params["blog-id"]
+        }/${generate12ByteID()}`}
+      >
+        <Button>Write a post</Button>
+      </Link>
     </WidthConstraint>
   );
 }

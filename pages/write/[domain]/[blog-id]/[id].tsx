@@ -16,7 +16,7 @@ export async function getServerSideProps(context: BlogServerSideProps) {
     },
   });
   return {
-    props: { data: post },
+    props: { data: JSON.parse(JSON.stringify(post)) },
   };
 }
 
@@ -29,20 +29,27 @@ export default function Write(props: { data: IPost }) {
     props.data?.content_json ?? {}
   );
 
+  console.log(props);
   console.log(params);
 
   async function onSave() {
     const data: IPost = {
+      meta: {
+        title,
+        image: "https://img.link",
+      },
       title,
+      tags: ["tag #1", "tag #2"],
+      id: params["id"].toString(),
       parent_id: params["blog-id"].toString(),
-      subdomain: params.domain.toString(),
-      id: params.id.toString(),
-      content_html: contentHTML,
-      content_json: contentJSON,
-      url: title
+      slug: title
         .replace(/[^a-zA-Z0-9]/g, "-")
         .toLowerCase()
         .trim(),
+      author: "random-id",
+      content_html: contentHTML,
+      content_json: contentJSON,
+      sub_domain: params.domain.toString(),
     };
 
     await axios
@@ -66,7 +73,7 @@ export default function Write(props: { data: IPost }) {
         <p>{saveStatus}</p>
         <input
           value={title}
-          className="text-3xl font-[600] text-black outline-none w-full"
+          className="text-4xl font-[600] text-black outline-none w-full tracking-tight"
           placeholder="Post title here..."
           onChange={(e) => setTitle(e.target.value)}
         />

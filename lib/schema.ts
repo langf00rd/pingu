@@ -1,13 +1,26 @@
 import { z } from "zod";
 
 export const blogSchema = z.object({
-  title: z.string(),
-  uid: z.string(),
-  subdomain: z.string(),
+  id: z.string(),
+  sub_domain: z.string(),
+  custom_domain: z.string().optional(),
   owner: z.string(),
-  banner: z.string().optional(),
-  theme_id: z.string().optional(),
+  name: z.string(),
+  disable_comments: z.boolean().optional(),
+  logo: z.string().optional(),
+  image: z.string().optional(),
+  favicon: z.string().optional(),
+  theme: z.string().optional(),
+  show_stats: z.boolean().optional(),
+  custom_css: z.string().optional(),
   theme_color: z.string().optional(),
+  created_at: z.string().optional(),
+  updated_at: z.string().optional(),
+  meta: z.object({
+    title: z.string(),
+    description: z.string().optional(),
+    image: z.string(),
+  }),
 });
 
 export const editorContentSchema = z.object({
@@ -26,13 +39,23 @@ export const editorContentSchema = z.object({
 });
 
 export const postSchema = z.object({
-  title: z.string(),
-  url: z.string(),
   id: z.string(),
+  title: z.string(),
+  tags: z.array(z.string()),
+  sub_domain: z.string(),
   parent_id: z.string(),
-  subdomain: z.string(),
-  owner: z.string().optional(),
-  banner: z.string().optional(),
+  slug: z.string(),
   content_html: z.string(),
   content_json: editorContentSchema,
+  author: z.string(),
+  show_stats: z.boolean().optional(),
+  banner: z.string().optional(),
+  show_toc: z.boolean().optional(),
+  created_at: z.string().optional(),
+  updated_at: z.string().optional(),
+  meta: z.object({
+    title: z.string(),
+    description: z.string().optional(),
+    image: z.string(),
+  }),
 });

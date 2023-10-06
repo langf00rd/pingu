@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  @apply text-[#666] leading-[2];
+  @apply text-[#666] leading-[1.5];
 }
 
 * {
@@ -18,6 +18,42 @@ h5,
 h6,
 b {
   @apply text-black font-[600] tracking-tight;
+}
+
+.post-content {
+  @apply leading-8;
+}
+
+.post-content a {
+  @apply underline;
+}
+
+.post-content hr {
+  @apply my-5;
+}
+
+.post-content h2 {
+  @apply text-2xl;
+}
+.post-content h1 {
+  @apply text-3xl;
+}
+
+.post-content h1,
+.post-content h2,
+.post-content h3,
+.post-content h4,
+.post-content h5,
+h6 {
+  @apply mt-10 mb-5;
+}
+
+.post-content blockquote {
+  @apply my-5 bg-gray-100 p-3 rounded-xl;
+}
+
+.post-content ul {
+  @apply list-disc ml-4 mt-2;
 }
 
 .dotted-bg {

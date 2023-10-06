@@ -13,6 +13,8 @@ export default function Dashboard(): JSX.Element {
     return (blog.data.data as IBlog[]) ?? [];
   });
 
+  console.log(data);
+
   if (isLoading) {
     return (
       <div className="dotted-bg">
@@ -26,9 +28,9 @@ export default function Dashboard(): JSX.Element {
     return (
       <div className="dotted-bg">
         <Header title="My blogs" />
-        <p className="text-center py-20">
-          An error occured. Refresh the page and try again
-        </p>
+        <div>
+          <p>An error occured loading your blogs</p>
+        </div>
       </div>
     );
   }

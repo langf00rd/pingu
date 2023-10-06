@@ -28,34 +28,33 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
       if (!exists) {
         console.log("creating...");
-        const postDoc = await prisma.post.create({
+        const doc = await prisma.post.create({
           data: {
             ...validation.data,
-            owner: user.emailAddresses[0].emailAddress,
+            created_at: new Date().toISOString(),
+            author: user.emailAddresses[0].emailAddress,
           },
         });
-        res.status(200).json({ data: postDoc });
+        res.status(200).json({ data: doc, message: "created!" });
       } else {
         console.log("updating...");
-
-        const postDataWithoutID = {
+        const updatedPostData = {
           ...validation.data,
-          owner: user.emailAddresses[0].emailAddress,
+          updated_at: new Date().toISOString(),
           id: undefined,
-          subdomain: undefined,
+          sub_domain: undefined,
         };
-
-        const updated = await prisma.post.update({
-          data: postDataWithoutID,
+        const updatedDoc = await prisma.post.update({
+          data: updatedPostData,
           where: {
             id: validation.data.id,
           },
         });
-        res.status(200).json({ data: updated, message: "updated!" });
+        res.status(200).json({ data: updatedDoc, message: "updated!" });
       }
     }
   } catch (error) {
     console.log(error);
-    res.status(500).json(error);
+    res.status(500).json({ error });
   }
 }

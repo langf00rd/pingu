@@ -5,6 +5,7 @@ import { getAuth } from "@clerk/nextjs/server";
 import { clerkClient } from "@clerk/nextjs";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  console.log(req.body);
   try {
     const { userId } = getAuth(req);
     if (!userId) {
@@ -21,8 +22,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     } else {
       const blogExists = await prisma.blog.findFirst({
         where: {
-          subdomain: {
-            equals: validation.data.subdomain,
+          sub_domain: {
+            equals: validation.data.sub_domain,
           },
         },
       });
@@ -32,6 +33,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       } else res.status(400).send({ error: "Subdomain is taken" });
     }
   } catch (error) {
-    res.status(500).json(error);
+    console.log(error);
+    res.status(500).json({ error });
   }
 }
