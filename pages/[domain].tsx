@@ -1,6 +1,6 @@
 import PostCard from "@/components/PostCard";
 import { BlogProps } from "@/interface";
-import { WidthConstraint } from "@/layouts/WidthConstraint";
+import WidthConstraint from "@/layouts/widthConstraint";
 import prisma from "@/prisma";
 import { BlogServerSideProps } from "@/types";
 

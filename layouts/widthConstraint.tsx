@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 import { ReactNode } from "react";
-export function WidthConstraint(props: {
+export default function WidthConstraint(props: {
   children?: ReactNode;
   className?: string;
 }): JSX.Element {

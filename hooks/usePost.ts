@@ -8,7 +8,7 @@ export function usePost(props: IPost) {
   const [isOwner, setIsOwner] = useState<boolean | undefined>();
 
   useEffect(() => {
-    setIsOwner(props && props.owner === user?.emailAddresses[0].emailAddress);
+    setIsOwner(props && props.author === user?.emailAddresses[0].emailAddress);
   }, [props, user?.emailAddresses]);
 
   return { isOwner };

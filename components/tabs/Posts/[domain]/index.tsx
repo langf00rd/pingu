@@ -1,6 +1,6 @@
 import PostCard from "@/components/PostCard";
 import { Button } from "@/components/ui/Button";
-import { WidthConstraint } from "@/layouts/WidthConstraint";
+import WidthConstraint from "@/layouts/widthConstraint";
 import { generate12ByteID } from "@/lib/utils";
 import { ROUTES } from "@/routes";
 import { IPost } from "@/types";

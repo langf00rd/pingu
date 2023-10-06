@@ -1,9 +1,9 @@
 import { motion } from "framer-motion";
-import { WidthConstraint } from "@/layouts/WidthConstraint";
 import { useState } from "react";
 import Image from "next/image";
 import { Badge } from "@/components/ui/Badge";
 import { BLOG_THEMES, BLOG_SETTINGS_TABS } from "@/lib/ui/nav";
+import WidthConstraint from "@/layouts/widthConstraint";
 
 export default function Themes(): JSX.Element {
   const [selectedTheme, setSelectedTheme] = useState(BLOG_THEMES[0].name);

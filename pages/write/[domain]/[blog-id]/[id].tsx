@@ -1,4 +1,4 @@
-import { WidthConstraint } from "@/layouts/WidthConstraint";
+import WidthConstraint from "@/layouts/widthConstraint";
 import prisma from "@/prisma";
 import { BlogServerSideProps, IPost, JSONContent } from "@/types";
 import axios from "axios";
