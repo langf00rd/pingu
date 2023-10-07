@@ -1,9 +1,9 @@
 import { motion } from "framer-motion";
-import { DashboardWidthConstraint } from "@/layouts/dashboardWidthConstraint";
 import { useState } from "react";
 import Image from "next/image";
 import { Badge } from "@/components/ui/Badge";
 import { BLOG_THEMES, BLOG_SETTINGS_TABS } from "@/lib/ui/nav";
+import WidthConstraint from "@/layouts/widthConstraint";
 
 export default function Themes(): JSX.Element {
   const [selectedTheme, setSelectedTheme] = useState(BLOG_THEMES[0].name);
@@ -51,7 +51,7 @@ export function BlogSettings(): JSX.Element {
   }
 
   return (
-    <DashboardWidthConstraint>
+    <WidthConstraint>
       <div className="flex items-start md:flex-row flex-col md:space-x-10">
         <ul className="md:grid flex gap-5 flex-1 md:sticky md:top-[100px] w-full mb-5">
           {BLOG_SETTINGS_TABS.map((tab, index) => (
@@ -69,6 +69,6 @@ export function BlogSettings(): JSX.Element {
         </ul>
         <div className="flex-[5] w-full">{tabViews()}</div>
       </div>
-    </DashboardWidthConstraint>
+    </WidthConstraint>
   );
 }

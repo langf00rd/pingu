@@ -11,7 +11,7 @@ export default function BlogCard(props: { data: IBlog }): JSX.Element {
         <div className="relative">
           <Link
             className="flex w-full space-x-3"
-            href={`${ROUTES.blog}/${props.data.uid}`}
+            href={`${ROUTES.blog}/${props.data.sub_domain}/${props.data.id}`}
           >
             <Image
               src="/assets/blob.webp"
@@ -22,9 +22,9 @@ export default function BlogCard(props: { data: IBlog }): JSX.Element {
             />
             <div>
               <p className="md:text-md text-black group-hover:text-primary">
-                {props.data.title}
+                {props.data.name}
               </p>
-              <small>{props.data.subdomain}.pingu.sh</small>
+              <small>{props.data.sub_domain}.pingu.sh</small>
             </div>
           </Link>
         </div>
@@ -39,7 +39,7 @@ export default function BlogCard(props: { data: IBlog }): JSX.Element {
           </li>
           <li>
             <Link
-              href={`${window.location.origin}/${props.data.subdomain}`}
+              href={`${window.location.origin}/${props.data.sub_domain}`}
               target="_blank"
               rel="noreferrer"
               className="flex items-center space-x-1 text-sm hover:text-primary transition-colors"

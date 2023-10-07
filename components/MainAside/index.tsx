@@ -15,7 +15,7 @@ const NAV_LINKS = [
   { label: "Docs", page: "/documentation", icon: <BookOpenIcon /> },
 ];
 
-export default function Aside(): JSX.Element {
+export default function MainAside(props: { show?: boolean }): JSX.Element {
   const { pathname } = useRouter();
   const showMainAside = useStore((state) => state.showMainAside);
   const setShowMainAside = useStore((state) => state.setShowMainAside);
@@ -28,7 +28,7 @@ export default function Aside(): JSX.Element {
           animate={{ x: 0 }}
           exit={{ x: -350 }}
           transition={{ type: "just" }}
-          className="w-[300px] fixed top-0 left-0 h-screen flex flex-col justify-between bg-white border-r shadow-xl p-5 z-20"
+          className="w-[300px] fixed top-0 left-0 h-screen flex flex-col justify-between bg-white border-r shadow-xl p-5 z-[60]"
         >
           <div className="space-y-20">
             <div className="flex items-center justify-between">

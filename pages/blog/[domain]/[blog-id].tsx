@@ -1,19 +1,34 @@
 import Header from "@/components/Header";
-import { Drafts } from "@/components/tabs/Drafts";
 import { Button } from "@/components/ui/Button";
 import { useState } from "react";
 import { BlogSettings } from "@/components/tabs/BlogSettings";
 import Footer from "@/components/Footer";
+import { IServerSideProps, IPost } from "@/types";
+import prisma from "@/prisma";
+import { Posts } from "@/components/tabs/Posts/[domain]";
 
 const TABS = ["Drafts", "Analytics", "Settings"];
 
-export default function Site(): JSX.Element {
+export async function getServerSideProps(context: IServerSideProps) {
+  const posts = await prisma.post.findMany({
+    where: {
+      parent_id: {
+        equals: context.params["blog-id"],
+      },
+    },
+  });
+  return {
+    props: { posts: JSON.parse(JSON.stringify(posts)) },
+  };
+}
+
+export default function Site(props: { posts: IPost[] }): JSX.Element {
   const [selectedTab, setSelectedTab] = useState(TABS[0]);
 
   function tabViews(): JSX.Element {
     switch (selectedTab) {
       case TABS[0]:
-        return <Drafts />;
+        return <Posts posts={props.posts} />;
       case TABS[2]:
         return <BlogSettings />;
       default:
