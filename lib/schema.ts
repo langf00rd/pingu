@@ -3,9 +3,9 @@ import { z } from "zod";
 export const blogSchema = z.object({
   id: z.string(),
   sub_domain: z.string(),
-  custom_domain: z.string().optional(),
   owner: z.string(),
   name: z.string(),
+  custom_domain: z.string().optional(),
   disable_comments: z.boolean().optional(),
   logo: z.string().optional(),
   image: z.string().optional(),
@@ -19,7 +19,7 @@ export const blogSchema = z.object({
   meta: z.object({
     title: z.string(),
     description: z.string().optional(),
-    image: z.string(),
+    image: z.string().optional(),
   }),
 });
 

@@ -15,36 +15,34 @@ import { ReactNode, useState } from "react";
 import { DialogDescription } from "@radix-ui/react-dialog";
 import useWindow from "@/hooks/useWindow";
 import Confetti from "react-confetti";
-import { Linkedin, Twitter } from "lucide-react";
-import Link from "next/link";
-import * as suuid from "short-uuid";
-import { ROUTES } from "@/routes";
-import { IBlog } from "@/types";
 import { generate12ByteID } from "@/lib/utils";
+import { BlogCreateSuccessView } from "../BlogCreateSuccess";
+import DropZone from "../DropZone";
+import { blogSchema } from "@/lib/schema";
+import { toFormikValidationSchema } from "zod-formik-adapter";
+import { z } from "zod";
+import { IBlog } from "@/types";
 
-interface Values {
-  name: string;
-  sub_domain: string;
-}
+type Blog_ = z.infer<typeof blogSchema_>;
 
-const uid = suuid.generate();
+// a copy of `blogSchema` with only reqquired fields for form validation
+const blogSchema_ = z.object({
+  name: blogSchema.shape.name,
+  id: blogSchema.shape.id,
+  sub_domain: blogSchema.shape.sub_domain,
+  created_at: blogSchema.shape.created_at,
+});
 
 export default function CreateSiteDialog(props: { children?: ReactNode }): JSX.Element {
   const { width, height } = useWindow();
   const [loading, setLoading] = useState(false);
   const [isBlogCreated, setIsBlogCreated] = useState(false);
 
-  async function onSubmitForm(values: Values) {
+  async function onSubmitForm(values: Blog_) {
     const body = { ...values } as IBlog;
-    body.id = generate12ByteID();
-    body.created_at = new Date().toISOString();
     body.meta = {
       title: values.name,
-      image: "random-image-here",
     };
-
-    console.log(body);
-
     setLoading(true);
     await axios
       .post("/api/blog/create", body)
@@ -54,7 +52,9 @@ export default function CreateSiteDialog(props: { children?: ReactNode }): JSX.E
         setIsBlogCreated(true);
       })
       .catch((error) => {
-        toast.error(error.response.data.error ?? error.message);
+        console.log(error);
+        toast.error(error.message);
+        // toast.error(error.response.data.error ?? error.message);
       });
     setLoading(false);
   }
@@ -80,14 +80,16 @@ export default function CreateSiteDialog(props: { children?: ReactNode }): JSX.E
           {!isBlogCreated ? (
             <Formik
               validateOnChange
-              // validationSchema={toFormikValidationSchema(blogSchema)}
-              onSubmit={(values: Values) => onSubmitForm(values)}
+              validationSchema={toFormikValidationSchema(blogSchema_)}
+              onSubmit={(values: Blog_) => onSubmitForm(values)}
               initialValues={{
                 name: "",
                 sub_domain: "",
+                id: generate12ByteID(),
+                created_at: new Date().toISOString(),
               }}
             >
-              {({ touched, errors }) => (
+              {({ touched, errors, values }) => (
                 <Form className="space-y-5">
                   <div className="space-y-1">
                     <Label htmlFor="name">Give your blog a name</Label>
@@ -122,14 +124,14 @@ export default function CreateSiteDialog(props: { children?: ReactNode }): JSX.E
                       <p>.pingu.sh</p>
                     </div>
                   </div>
-                  {/* <div className="space-y-1">
+                  <div className="space-y-1">
                     <Label htmlFor="title">Blog photo</Label>
                     <DropZone
                       onUploadedFile={async () => console.log("hi mom!")}
                       fieldName={""}
                       value={""}
                     />
-                  </div> */}
+                  </div>
                   <DialogFooter>
                     <Button disabled={loading} type="submit">
                       {loading ? "loading..." : "Create blog"}
@@ -139,25 +141,7 @@ export default function CreateSiteDialog(props: { children?: ReactNode }): JSX.E
               )}
             </Formik>
           ) : (
-            <>
-              <ul className="flex items-center space-x-5">
-                <li>
-                  <Link href="/">
-                    <Twitter fill="#26a7de" strokeWidth={0} />
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/">
-                    <Linkedin fill="#0072b1" strokeWidth={0} />
-                  </Link>
-                </li>
-              </ul>
-              <DialogFooter>
-                <Link href={`${ROUTES.blog}/${uid}`}>
-                  <Button className="w-max">Next</Button>
-                </Link>
-              </DialogFooter>
-            </>
+            <BlogCreateSuccessView uid="dddd" />
           )}
         </DialogContent>
       </Dialog>

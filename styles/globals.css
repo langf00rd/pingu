@@ -49,7 +49,7 @@ h6 {
 }
 
 .post-content blockquote {
-  @apply my-5 bg-gray-100 p-3 rounded-xl;
+  @apply my-5 bg-gray-100 rounded-xl;
 }
 
 .post-content ul {
@@ -65,6 +65,13 @@ h6 {
     radial-gradient(#5e00f631 0.9500000000000001px, #ffffff 0.9500000000000001px);
   background-size: 38px 38px;
   background-position: 0 0, 19px 19px;
+}
+
+.post-content pre {
+  border: 1px solid #f3f3f3;
+  padding: 4px 20px;
+  border-radius: 10px;
+  background: #f8f8f8;
 }
 
 ::selection {

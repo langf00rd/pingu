@@ -19,7 +19,7 @@ export default function App({ Component, pageProps }: AppProps) {
       {...pageProps}
     >
       <QueryClientProvider client={queryClient}>
-        <Toaster position="top-center" />
+        <Toaster position="bottom-right" />
         <div className={inter.className}>
           <ReactQueryDevtools initialIsOpen={true} />
           <Component {...pageProps} />

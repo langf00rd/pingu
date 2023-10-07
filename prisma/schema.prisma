@@ -12,7 +12,7 @@ model Blog {
   id               String    @id @default(auto()) @map("_id") @db.ObjectId
   sub_domain       String
   custom_domain    String?
-  meta             Meta
+  meta             Meta?
   owner            String
   name             String
   disable_comments Boolean?
@@ -29,7 +29,7 @@ model Blog {
 
 model Post {
   id           String      @id @default(auto()) @map("_id") @db.ObjectId
-  meta         Meta
+  meta         Meta?
   title        String
   tags         String[]
   parent_id    String
@@ -48,7 +48,7 @@ model Post {
 type Meta {
   title       String
   description String?
-  image       String
+  image       String?
 }
 
 type JSONContent {
