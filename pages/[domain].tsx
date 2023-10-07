@@ -2,13 +2,11 @@ import PostCard from "@/components/PostCard";
 import { BlogProps } from "@/interface";
 import WidthConstraint from "@/layouts/widthConstraint";
 import prisma from "@/prisma";
-import { BlogServerSideProps } from "@/types";
+import { IServerSideProps } from "@/types";
 
-export async function getServerSideProps(context: BlogServerSideProps) {
-  console.log(context.params);
+export async function getServerSideProps(context: IServerSideProps) {
   const domain = context.params.domain;
   const blog = await prisma.blog.findFirst({ where: { sub_domain: { equals: domain } } });
-  console.log(blog);
   const posts = await prisma.post.findMany({
     where: {
       parent_id: {
@@ -16,13 +14,7 @@ export async function getServerSideProps(context: BlogServerSideProps) {
       },
     },
   });
-  console.log(posts);
-  // console.log(posts[0].created_at?.toString());
-  // const posts = await prisma.post.findMany({
-  //   where: { parent_id: { equals: blog?.id } },
-  // });
   const _ = JSON.parse(JSON.stringify({ ...blog, posts }));
-
   return {
     props: { post: _ },
   };

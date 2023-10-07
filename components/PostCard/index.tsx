@@ -4,6 +4,7 @@ import { ROUTES } from "@/routes";
 import Image from "next/image";
 import { IPost } from "@/types";
 import { useParams } from "next/navigation";
+import { Badge } from "../ui/Badge";
 
 export default function PostCard(props: {
   index: number;
@@ -19,12 +20,12 @@ export default function PostCard(props: {
       className="group"
     >
       <Link href={props.page ?? `${ROUTES.write}/${params.id}/${props.data.id}`}>
-        <div className="flex flex-col md:flex-row border rounded-2xl bg-white hover:shadow-none shadow-md hover:scale-[1.03] transition-all hover:bg-transparent">
+        <div className="border rounded-2xl bg-white hover:shadow-none shadow-md hover:scale-[1.03] transition-all hover:bg-transparent">
           <div className="flex-1 relative">
-            {/* <Badge className="w-max m-3 absolute top-0 left-0">published 🎉</Badge> */}
+            <Badge className="w-max m-3 absolute top-0 left-0">published 🎉</Badge>
             <Image
               src={props.data.banner ?? "/assets/blob.webp"}
-              className="bg-gray-100 object-cover h-[200px] w-full rounded-t-2xl md:rounded-l-2xl"
+              className="bg-gray-100 object-cover h-[200px] w-full rounded-t-2xl"
               width={200}
               height={200}
               alt="..."

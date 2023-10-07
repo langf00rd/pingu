@@ -3,14 +3,13 @@ import { Button } from "@/components/ui/Button";
 import { useState } from "react";
 import { BlogSettings } from "@/components/tabs/BlogSettings";
 import Footer from "@/components/Footer";
-import { BlogServerSideProps, IPost } from "@/types";
+import { IServerSideProps, IPost } from "@/types";
 import prisma from "@/prisma";
 import { Posts } from "@/components/tabs/Posts/[domain]";
 
 const TABS = ["Drafts", "Analytics", "Settings"];
 
-export async function getServerSideProps(context: BlogServerSideProps) {
-  console.log(context.params);
+export async function getServerSideProps(context: IServerSideProps) {
   const posts = await prisma.post.findMany({
     where: {
       parent_id: {
@@ -18,7 +17,6 @@ export async function getServerSideProps(context: BlogServerSideProps) {
       },
     },
   });
-  console.log(posts);
   return {
     props: { posts: JSON.parse(JSON.stringify(posts)) },
   };
@@ -26,8 +24,6 @@ export async function getServerSideProps(context: BlogServerSideProps) {
 
 export default function Site(props: { posts: IPost[] }): JSX.Element {
   const [selectedTab, setSelectedTab] = useState(TABS[0]);
-
-  console.log(props);
 
   function tabViews(): JSX.Element {
     switch (selectedTab) {

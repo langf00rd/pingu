@@ -41,6 +41,7 @@ export const editorContentSchema = z.object({
 export const postSchema = z.object({
   id: z.string(),
   title: z.string(),
+  sub_title: z.string(),
   tags: z.array(z.string()),
   sub_domain: z.string(),
   parent_id: z.string(),
@@ -53,9 +54,17 @@ export const postSchema = z.object({
   show_toc: z.boolean().optional(),
   created_at: z.string().optional(),
   updated_at: z.string().optional(),
+  is_published: z.boolean(),
   meta: z.object({
     title: z.string(),
     description: z.string().optional(),
     image: z.string(),
   }),
+});
+
+// a copy of `postSchema` with only reqquired fields for form validation
+export const formPostSchema = z.object({
+  show_toc: postSchema.shape.show_toc,
+  show_stats: postSchema.shape.show_stats,
+  meta: postSchema.shape.meta,
 });

@@ -4,10 +4,10 @@ import { Menu } from "lucide-react";
 import { Button } from "../ui/Button";
 import { useRouter } from "next/router";
 import { useStore } from "@/config/store";
-import Aside from "../Aside";
 import { AnimatePresence } from "framer-motion";
 import { ReactNode } from "react";
 import CreateSiteDialog from "../CreateSiteDialog";
+import MainAside from "../MainAside";
 
 export default function Header(props: {
   title?: string;
@@ -47,7 +47,7 @@ export default function Header(props: {
         {props.children}
         <h2 className="text-xl">{props.title}</h2>
       </div>
-      <Aside />
+      <MainAside />
     </>
   );
 }
