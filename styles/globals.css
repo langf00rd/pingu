@@ -10,6 +10,18 @@ body {
   @apply p-0 m-0 box-border;
 }
 
+.tiptap {
+  @apply -mt-[50px];
+}
+
+.tiptap p:first-child {
+  @apply -mt-[30px];
+}
+
+textarea {
+  @apply min-h-[150px];
+}
+
 h1,
 h2,
 h3,
@@ -50,6 +62,10 @@ h6 {
 
 .post-content blockquote {
   @apply my-5 bg-gray-100 rounded-xl;
+}
+
+.post-content img {
+  @apply my-3 rounded-2xl;
 }
 
 .post-content ul {

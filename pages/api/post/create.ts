@@ -16,6 +16,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const validation = postSchema.safeParse(req.body);
 
     if (!validation.success) {
+      console.log(validation.error.issues);
       res.status(400).json({ error: validation.error.issues });
     } else {
       const exists = await prisma.post.findFirst({

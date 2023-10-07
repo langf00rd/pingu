@@ -9,11 +9,10 @@ import { useParams } from "next/navigation";
 
 export function Posts(props: { posts: IPost[] }): JSX.Element {
   const params = useParams();
-  console.log(params);
   return (
-    <WidthConstraint>
+    <WidthConstraint className="grid space-y-10">
       {props.posts.length > 0 && (
-        <ul className="grid gap-5">
+        <ul className="grid grid-cols-2 gap-5">
           {props.posts.map((post, index) => (
             <PostCard
               page={`${ROUTES.write}/${params.domain}/${params["blog-id"]}/${post.id}`}
@@ -28,6 +27,7 @@ export function Posts(props: { posts: IPost[] }): JSX.Element {
         href={`${ROUTES.write}/${params.domain}/${
           params["blog-id"]
         }/${generate12ByteID()}`}
+        className="text-center"
       >
         <Button>Write a post</Button>
       </Link>

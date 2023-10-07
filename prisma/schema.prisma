@@ -31,6 +31,7 @@ model Post {
   id           String      @id @default(auto()) @map("_id") @db.ObjectId
   meta         Meta?
   title        String
+  sub_title    String
   tags         String[]
   parent_id    String
   sub_domain   String
@@ -43,6 +44,7 @@ model Post {
   show_toc     Boolean?
   created_at   DateTime?
   updated_at   DateTime?
+  is_published Boolean
 }
 
 type Meta {

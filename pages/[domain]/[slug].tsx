@@ -1,8 +1,8 @@
 import WidthConstraint from "@/layouts/widthConstraint";
 import prisma from "@/prisma";
-import { BlogServerSideProps, IPost } from "@/types";
+import { IServerSideProps, IPost } from "@/types";
 
-export async function getServerSideProps(context: BlogServerSideProps) {
+export async function getServerSideProps(context: IServerSideProps) {
   const domain = context.params.domain;
   const slug = context.params.slug;
   const post = await prisma.post.findFirst({
