@@ -4,6 +4,8 @@ import Image from "next/image";
 import { Badge } from "@/components/ui/Badge";
 import { BLOG_THEMES, BLOG_SETTINGS_TABS } from "@/lib/ui/nav";
 import WidthConstraint from "@/layouts/widthConstraint";
+import Meta from "@/components/Meta";
+import { useParams } from "next/navigation";
 
 export default function Themes(): JSX.Element {
   const [selectedTheme, setSelectedTheme] = useState(BLOG_THEMES[0].name);
@@ -40,7 +42,9 @@ export default function Themes(): JSX.Element {
 }
 
 export function BlogSettings(): JSX.Element {
+  const params = useParams();
   const [selectedTab, setSelectedTab] = useState(BLOG_SETTINGS_TABS[0]);
+
   function tabViews(): JSX.Element {
     switch (selectedTab) {
       case BLOG_SETTINGS_TABS[0]:
@@ -51,24 +55,27 @@ export function BlogSettings(): JSX.Element {
   }
 
   return (
-    <WidthConstraint>
-      <div className="flex items-start md:flex-row flex-col md:space-x-10">
-        <ul className="md:grid flex gap-5 flex-1 md:sticky md:top-[100px] w-full mb-5">
-          {BLOG_SETTINGS_TABS.map((tab, index) => (
-            <li
-              key={index}
-              onClick={() => setSelectedTab(tab)}
-              className={`cursor-pointer hover:text-primary transition-colors flex space-x-1 ${
-                selectedTab === tab && "text-primary"
-              }`}
-            >
-              <div className="mt-[1px]">{tab.icon}</div>
-              <p className="whitespace-nowrap">{tab.label}</p>
-            </li>
-          ))}
-        </ul>
-        <div className="flex-[5] w-full">{tabViews()}</div>
-      </div>
-    </WidthConstraint>
+    <>
+      <Meta title={`${params.domain.toString().replaceAll("-", " ")} - Settings`} />
+      <WidthConstraint>
+        <div className="flex items-start md:flex-row flex-col md:space-x-10">
+          <ul className="md:grid flex gap-5 flex-1 md:sticky md:top-[100px] w-full mb-5">
+            {BLOG_SETTINGS_TABS.map((tab, index) => (
+              <li
+                key={index}
+                onClick={() => setSelectedTab(tab)}
+                className={`cursor-pointer hover:text-primary transition-colors flex space-x-1 ${
+                  selectedTab === tab && "text-primary"
+                }`}
+              >
+                <div className="mt-[1px]">{tab.icon}</div>
+                <p className="whitespace-nowrap">{tab.label}</p>
+              </li>
+            ))}
+          </ul>
+          <div className="flex-[5] w-full">{tabViews()}</div>
+        </div>
+      </WidthConstraint>
+    </>
   );
 }

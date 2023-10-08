@@ -31,6 +31,7 @@ const blogSchema_ = z.object({
   id: blogSchema.shape.id,
   sub_domain: blogSchema.shape.sub_domain,
   created_at: blogSchema.shape.created_at,
+  description: blogSchema.shape.description,
 });
 
 export default function CreateSiteDialog(props: { children?: ReactNode }): JSX.Element {
@@ -40,9 +41,7 @@ export default function CreateSiteDialog(props: { children?: ReactNode }): JSX.E
 
   async function onSubmitForm(values: Blog_) {
     const body = { ...values } as IBlog;
-    body.meta = {
-      title: values.name,
-    };
+    console.log(body);
     setLoading(true);
     await axios
       .post("/api/blog/create", body)
@@ -85,6 +84,7 @@ export default function CreateSiteDialog(props: { children?: ReactNode }): JSX.E
               initialValues={{
                 name: "",
                 sub_domain: "",
+                description: "",
                 id: generate12ByteID(),
                 created_at: new Date().toISOString(),
               }}
@@ -99,6 +99,17 @@ export default function CreateSiteDialog(props: { children?: ReactNode }): JSX.E
                       placeholder="My personal blog"
                       className={`w-full outline-none bg-gray-50 p-2 rounded-md border transition-colors ${
                         touched.name && errors.name && "border-red-300"
+                      }`}
+                    />
+                  </div>
+                  <div className="space-y-1">
+                    <Label htmlFor="name">Describe your blog</Label>
+                    <Field
+                      as="textarea"
+                      id="description"
+                      name="description"
+                      className={`w-full outline-none bg-gray-50 p-2 rounded-md border transition-colors ${
+                        touched.description && errors.description && "border-red-300"
                       }`}
                     />
                   </div>
