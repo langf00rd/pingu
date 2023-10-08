@@ -7,6 +7,7 @@ import { IServerSideProps, IPost } from "@/types";
 import prisma from "@/prisma";
 import { Posts } from "@/components/tabs/Posts/[domain]";
 import { useParams } from "next/navigation";
+import AuthLayout from "@/layouts/auth.layout";
 
 const TABS = ["Drafts", "Analytics", "Settings"];
 
@@ -42,28 +43,30 @@ export default function Site(props: { posts: IPost[] }): JSX.Element {
 
   return (
     <>
-      <div className="dotted-bg">
-        <Header>
-          <ul className="flex items-center justify-center relative z-10">
-            {TABS.map((tab) => (
-              <li key={tab}>
-                <Button
-                  onClick={() => setSelectedTab(tab)}
-                  variant="ghost"
-                  size="md"
-                  className={`w-[120px] h-[70px] border-transparent border-b-2 rounded-none ${
-                    selectedTab === tab && "border-primary text-primary"
-                  }`}
-                >
-                  <p className="text-center">{tab}</p>
-                </Button>
-              </li>
-            ))}
-          </ul>
-        </Header>
-        {tabViews()}
-        <Footer />
-      </div>
+      <AuthLayout>
+        <div className="dotted-bg">
+          <Header>
+            <ul className="flex items-center justify-center relative z-10">
+              {TABS.map((tab) => (
+                <li key={tab}>
+                  <Button
+                    onClick={() => setSelectedTab(tab)}
+                    variant="ghost"
+                    size="md"
+                    className={`w-[120px] h-[70px] border-transparent border-b-2 rounded-none ${
+                      selectedTab === tab && "border-primary text-primary"
+                    }`}
+                  >
+                    <p className="text-center">{tab}</p>
+                  </Button>
+                </li>
+              ))}
+            </ul>
+          </Header>
+          {tabViews()}
+          <Footer />
+        </div>
+      </AuthLayout>
     </>
   );
 }
