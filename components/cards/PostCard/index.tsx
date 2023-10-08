@@ -4,7 +4,7 @@ import { ROUTES } from "@/routes";
 import Image from "next/image";
 import { IPost } from "@/types";
 import { useParams } from "next/navigation";
-import { Badge } from "../ui/Badge";
+import { Badge } from "../../ui/Badge";
 
 export default function PostCard(props: {
   index: number;

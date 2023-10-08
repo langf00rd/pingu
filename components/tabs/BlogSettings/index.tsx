@@ -64,7 +64,7 @@ export function BlogSettings(): JSX.Element {
               <li
                 key={index}
                 onClick={() => setSelectedTab(tab)}
-                className={`cursor-pointer hover:text-primary transition-colors flex space-x-1 ${
+                className={`cursor-pointer hover:text-primary transition-colors flex items-center space-x-1 ${
                   selectedTab === tab && "text-primary"
                 }`}
               >

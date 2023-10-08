@@ -1,5 +1,5 @@
 import { MetaProps } from "@/interface";
-import { META_CONTENT } from "@/lib";
+import { META_CONTENT } from "@/lib/constants";
 import Head from "next/head";
 
 const Meta = (props: MetaProps) => {

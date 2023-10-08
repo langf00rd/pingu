@@ -7,6 +7,7 @@ import { IServerSideProps } from "@/types";
 import Link from "next/link";
 
 export default function Blog(props: { blog: BlogProps }): JSX.Element {
+  console.log(props);
   if (!props.blog) return <></>;
   return (
     <>
@@ -47,7 +48,7 @@ export default function Blog(props: { blog: BlogProps }): JSX.Element {
               ))}
             </ul>
           ) : (
-            <></>
+            <h2>There are no posts</h2>
           )}
         </WidthConstraint>
         <PublicFooter blogName={props.blog.name} />
