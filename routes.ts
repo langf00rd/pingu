@@ -6,6 +6,8 @@ export const ROUTES = {
   terms: "/terms",
   blog: "/blog",
   dashboard: "/dashboard",
+  settings: "/settings",
+  feedback: "/feedback",
   signIn: "/sign-in",
   signUp: "/sign-up",
   publishedURL: "https://pingu-blog.vercel.app",
