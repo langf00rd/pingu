@@ -58,7 +58,7 @@ export default function Blog(props: { blog: BlogProps }): JSX.Element {
 
 export async function getStaticPaths() {
   return {
-    paths: ["/[domain]"],
+    paths: ["/domain"],
     fallback: true,
   };
 }

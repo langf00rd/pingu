@@ -76,7 +76,7 @@ export default function ReadPost(props: { post: IPost }): JSX.Element {
 
 export async function getStaticPaths() {
   return {
-    paths: ["/[domain]/[slug]"],
+    paths: ["/domain/slug"],
     fallback: true,
   };
 }
