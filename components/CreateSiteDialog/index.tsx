@@ -32,6 +32,7 @@ const blogSchema_ = z.object({
   sub_domain: blogSchema.shape.sub_domain,
   created_at: blogSchema.shape.created_at,
   description: blogSchema.shape.description,
+  banner: blogSchema.shape.banner,
 });
 
 export default function CreateSiteDialog(props: { children?: ReactNode }): JSX.Element {
@@ -87,6 +88,8 @@ export default function CreateSiteDialog(props: { children?: ReactNode }): JSX.E
                 description: "",
                 id: generate12ByteID(),
                 created_at: new Date().toISOString(),
+                banner:
+                  "https://res.cloudinary.com/follio/image/upload/v1696762121/bfnmtin2bi95h6ty5qxi.png",
               }}
             >
               {({ touched, errors, values }) => (
@@ -128,7 +131,7 @@ export default function CreateSiteDialog(props: { children?: ReactNode }): JSX.E
                     >
                       <Field
                         id="sub_domain"
-                        className="w-full bg-transparent outline-none text-primary"
+                        className="w-full bg-transparent outline-none text-primary text-right"
                         name="sub_domain"
                         placeholder="john"
                       />

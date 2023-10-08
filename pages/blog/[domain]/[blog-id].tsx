@@ -2,11 +2,10 @@ import Header from "@/components/Header";
 import { Button } from "@/components/ui/Button";
 import { useState } from "react";
 import { BlogSettings } from "@/components/tabs/BlogSettings";
-import Footer from "@/components/Footer";
+import Footer from "@/components/footers/Footer";
 import { IServerSideProps, IPost } from "@/types";
 import prisma from "@/prisma";
 import { Posts } from "@/components/tabs/Posts/[domain]";
-import Meta from "@/components/Meta";
 import { useParams } from "next/navigation";
 
 const TABS = ["Drafts", "Analytics", "Settings"];

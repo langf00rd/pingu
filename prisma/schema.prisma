@@ -38,13 +38,20 @@ model Post {
   slug         String
   content_html String
   content_json JSONContent
-  author       String
+  author       Author
   show_stats   Boolean?
   banner       String?
   show_toc     Boolean?
   created_at   DateTime?
   updated_at   DateTime?
   is_published Boolean
+}
+
+type Author {
+  id    String
+  name  String
+  email String
+  photo String
 }
 
 type Meta {
