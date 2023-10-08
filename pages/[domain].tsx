@@ -1,3 +1,4 @@
+import Meta from "@/components/Meta";
 import PostCard from "@/components/PostCard";
 import { BlogProps } from "@/interface";
 import WidthConstraint from "@/layouts/widthConstraint";
@@ -16,28 +17,34 @@ export async function getServerSideProps(context: IServerSideProps) {
   });
   const _ = JSON.parse(JSON.stringify({ ...blog, posts }));
   return {
-    props: { post: _ },
+    props: { blog: _ },
   };
 }
 
-export default function Blog(props: { post: BlogProps }): JSX.Element {
-  console.log(props.post);
+export default function Blog(props: { blog: BlogProps }): JSX.Element {
+  console.log(props);
   return (
     <>
+      <Meta
+        title={props.blog.name}
+        image={props.blog.banner}
+        description={props.blog.description}
+        imageAlt={`${props.blog.name} banner image`}
+      />
       <div className="dotted-bg">
         <div className="bg-white shadow-sm border-b">
           <WidthConstraint>
             <div className="py-20">
-              <h1 className="text-4xl">{props.post.name}</h1>
+              <h1 className="text-4xl">{props.blog.name}</h1>
             </div>
           </WidthConstraint>
         </div>
         <WidthConstraint>
-          {props.post.posts.length > 0 ? (
+          {props.blog.posts.length > 0 ? (
             <ul className="grid gap-5">
-              {props.post.posts.map((post, index) => (
+              {props.blog.posts.map((post, index) => (
                 <PostCard
-                  page={`${props.post.sub_domain}/${post.slug}`}
+                  page={`${props.blog.sub_domain}/${post.slug}`}
                   data={post}
                   index={index}
                   key={index}

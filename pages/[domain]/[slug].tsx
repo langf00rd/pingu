@@ -1,3 +1,4 @@
+import Meta from "@/components/Meta";
 import WidthConstraint from "@/layouts/widthConstraint";
 import prisma from "@/prisma";
 import { IServerSideProps, IPost } from "@/types";
@@ -28,6 +29,12 @@ export default function ReadPost(props: { post: IPost }): JSX.Element {
 
   return (
     <>
+      <Meta
+        // image={props.post.meta.image ?? props.post.banner}
+        title={props.post.meta.title}
+        description={props.post.meta.description}
+        imageAlt={`${props.post.meta.title} banner image`}
+      />
       <WidthConstraint className="post-content">
         <h1>{props.post.title}</h1>
         <ul>

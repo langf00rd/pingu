@@ -6,6 +6,8 @@ import Footer from "@/components/Footer";
 import { IServerSideProps, IPost } from "@/types";
 import prisma from "@/prisma";
 import { Posts } from "@/components/tabs/Posts/[domain]";
+import Meta from "@/components/Meta";
+import { useParams } from "next/navigation";
 
 const TABS = ["Drafts", "Analytics", "Settings"];
 
@@ -23,7 +25,10 @@ export async function getServerSideProps(context: IServerSideProps) {
 }
 
 export default function Site(props: { posts: IPost[] }): JSX.Element {
+  const params = useParams();
   const [selectedTab, setSelectedTab] = useState(TABS[0]);
+
+  console.log(params);
 
   function tabViews(): JSX.Element {
     switch (selectedTab) {
@@ -37,27 +42,29 @@ export default function Site(props: { posts: IPost[] }): JSX.Element {
   }
 
   return (
-    <div className="dotted-bg">
-      <Header>
-        <ul className="flex items-center justify-center relative z-10">
-          {TABS.map((tab) => (
-            <li key={tab}>
-              <Button
-                onClick={() => setSelectedTab(tab)}
-                variant="ghost"
-                size="md"
-                className={`w-[120px] h-[70px] border-transparent border-b-2 rounded-none ${
-                  selectedTab === tab && "border-primary text-primary"
-                }`}
-              >
-                <p className="text-center">{tab}</p>
-              </Button>
-            </li>
-          ))}
-        </ul>
-      </Header>
-      {tabViews()}
-      <Footer />
-    </div>
+    <>
+      <div className="dotted-bg">
+        <Header>
+          <ul className="flex items-center justify-center relative z-10">
+            {TABS.map((tab) => (
+              <li key={tab}>
+                <Button
+                  onClick={() => setSelectedTab(tab)}
+                  variant="ghost"
+                  size="md"
+                  className={`w-[120px] h-[70px] border-transparent border-b-2 rounded-none ${
+                    selectedTab === tab && "border-primary text-primary"
+                  }`}
+                >
+                  <p className="text-center">{tab}</p>
+                </Button>
+              </li>
+            ))}
+          </ul>
+        </Header>
+        {tabViews()}
+        <Footer />
+      </div>
+    </>
   );
 }
