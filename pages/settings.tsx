@@ -1,5 +1,5 @@
 import Header from "@/components/Header";
-import AuthLayout from "@/layouts/auth.layout";
+import AuthLayout from "@/layouts/authLayout";
 export default function Settings(): JSX.Element {
   return (
     <AuthLayout>

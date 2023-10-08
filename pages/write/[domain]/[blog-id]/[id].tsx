@@ -1,7 +1,7 @@
 import Meta from "@/components/Meta";
 import WriteAside from "@/components/WriteAside";
 import { useStore } from "@/config/store";
-import AuthLayout from "@/layouts/auth.layout";
+import AuthLayout from "@/layouts/authLayout";
 import WidthConstraint from "@/layouts/widthConstraint";
 import prisma from "@/prisma";
 import { IServerSideProps, IPost, JSONContent } from "@/types";
