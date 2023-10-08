@@ -6,7 +6,7 @@ import { useStore } from "@/config/store";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import Footer from "../Footer";
+import Footer from "../footers/Footer";
 import CreateSiteDialog from "../CreateSiteDialog";
 
 const NAV_LINKS = [

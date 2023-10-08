@@ -33,7 +33,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           data: {
             ...validation.data,
             created_at: new Date().toISOString(),
-            author: user.emailAddresses[0].emailAddress,
+            author: {
+              id: user.id,
+              email: user.emailAddresses[0].emailAddress,
+              name: `${user.firstName} ${user.lastName ?? ""}`,
+              photo: user.imageUrl,
+            },
           },
         });
         res.status(200).json({ data: doc, message: "created!" });

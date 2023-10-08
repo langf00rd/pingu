@@ -44,7 +44,6 @@ export const postSchema = z.object({
   slug: z.string(),
   content_html: z.string(),
   content_json: editorContentSchema,
-  author: z.string(),
   show_stats: z.boolean().optional(),
   banner: z.string().optional(),
   show_toc: z.boolean().optional(),
@@ -56,6 +55,14 @@ export const postSchema = z.object({
     description: z.string().optional(),
     image: z.string(),
   }),
+  author: z
+    .object({
+      id: z.string(),
+      name: z.string(),
+      email: z.string(),
+      photo: z.string(),
+    })
+    .optional(),
 });
 
 // a copy of `postSchema` with only reqquired fields for form validation
@@ -63,4 +70,5 @@ export const formPostSchema = z.object({
   show_toc: postSchema.shape.show_toc,
   show_stats: postSchema.shape.show_stats,
   meta: postSchema.shape.meta,
+  banner: postSchema.shape.banner,
 });
