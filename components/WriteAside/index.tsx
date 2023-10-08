@@ -25,6 +25,7 @@ export default function WriteAside(props: {
 
   async function onSubmitForm(values: FormPost) {
     setLoading(true);
+    console.log(values);
     const data: IPost = {
       meta: {
         title: values.meta.title,
@@ -40,13 +41,13 @@ export default function WriteAside(props: {
         .replace(/[^a-zA-Z0-9]/g, "-")
         .toLowerCase()
         .trim(),
-      author: "random-id",
       content_html: props.contentHTML,
       content_json: props.contentJSON,
       sub_domain: params.domain.toString(),
       show_stats: values.show_stats,
       show_toc: values.show_toc,
       is_published: true,
+      banner: values.banner,
     };
 
     await axios
@@ -87,6 +88,8 @@ export default function WriteAside(props: {
               initialValues={{
                 show_stats: props.data?.show_stats,
                 show_toc: props.data?.show_toc,
+                banner:
+                  "https://res.cloudinary.com/follio/image/upload/v1696762121/bfnmtin2bi95h6ty5qxi.png",
                 meta: {
                   title: props.data?.meta.title ?? "",
                   description: props.data?.meta.description ?? "",

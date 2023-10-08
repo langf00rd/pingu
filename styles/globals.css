@@ -3,11 +3,15 @@
 @tailwind utilities;
 
 body {
-  @apply text-[#666] leading-[1.5];
+  @apply text-[#666];
+}
+
+li {
+  @apply list-none;
 }
 
 * {
-  @apply p-0 m-0 box-border;
+  @apply p-0 m-0 box-border leading-[1.7];
 }
 
 .tiptap {
@@ -28,6 +32,7 @@ h3,
 h4,
 h5,
 h6,
+strong,
 b {
   @apply text-black font-[600] tracking-tight;
 }
@@ -56,7 +61,7 @@ b {
 .post-content h3,
 .post-content h4,
 .post-content h5,
-h6 {
+.post-content h6 {
   @apply mt-10 mb-5;
 }
 
