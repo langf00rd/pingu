@@ -18,3 +18,11 @@ export interface IWindow {
 export interface BlogProps extends IBlog {
   posts: IPost[];
 }
+
+export interface MetaProps {
+  imageAlt?: string;
+  description?: string;
+  image?: string;
+  title: string;
+  url?: string;
+}

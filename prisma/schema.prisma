@@ -12,12 +12,12 @@ model Blog {
   id               String    @id @default(auto()) @map("_id") @db.ObjectId
   sub_domain       String
   custom_domain    String?
-  meta             Meta?
+  description      String?
   owner            String
   name             String
   disable_comments Boolean?
   logo             String?
-  image            String?
+  banner           String?
   favicon          String?
   theme            String?
   show_stats       Boolean?

@@ -69,9 +69,9 @@ export default function WriteAside(props: {
           animate={{ x: 0 }}
           exit={{ x: -500 }}
           transition={{ type: "just" }}
-          className="w-[500px] fixed top-0 left-0 h-screen flex flex-col justify-between bg-white border-r shadow-xl p-5 z-[60]"
+          className="md:w-[500px] fixed top-0 left-0 h-screen flex flex-col justify-between bg-white border-r shadow-xl p-5 overflow-y-scroll z-[60]"
         >
-          <div className="space-y-20">
+          <div className="space-y-10">
             <div className="flex items-center justify-between">
               <h2 className="text-xl">Ready to publish?</h2>
               <Button

@@ -8,7 +8,6 @@ export const blogSchema = z.object({
   custom_domain: z.string().optional(),
   disable_comments: z.boolean().optional(),
   logo: z.string().optional(),
-  image: z.string().optional(),
   favicon: z.string().optional(),
   theme: z.string().optional(),
   show_stats: z.boolean().optional(),
@@ -16,11 +15,8 @@ export const blogSchema = z.object({
   theme_color: z.string().optional(),
   created_at: z.string().optional(),
   updated_at: z.string().optional(),
-  meta: z.object({
-    title: z.string(),
-    description: z.string().optional(),
-    image: z.string().optional(),
-  }),
+  banner: z.string().optional(),
+  description: z.string().optional(),
 });
 
 export const editorContentSchema = z.object({
