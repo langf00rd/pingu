@@ -1,15 +1,10 @@
-import Footer from "@/components/footers/Footer";
 import Meta from "@/components/Meta";
-import PostCard from "@/components/PostCard";
 import PublicFooter from "@/components/footers/PublicFooter";
-import { Button } from "@/components/ui/Button";
 import { BlogProps } from "@/interface";
 import WidthConstraint from "@/layouts/widthConstraint";
 import prisma from "@/prisma";
-import { ROUTES } from "@/routes";
 import { IServerSideProps } from "@/types";
 import Link from "next/link";
-import Image from "next/image";
 
 export async function getServerSideProps(context: IServerSideProps) {
   const domain = context.params.domain;
@@ -72,29 +67,6 @@ export default function Blog(props: { blog: BlogProps }): JSX.Element {
           )}
         </WidthConstraint>
         <PublicFooter blogName={props.blog.name} />
-        {/* <div className="bg-white shadow-sm border-b">
-          <WidthConstraint>
-            <div className="py-20">
-              <h1 className="text-4xl">{props.blog.name}</h1>
-            </div>
-          </WidthConstraint>
-        </div> */}
-        {/* <WidthConstraint>
-          {props.blog.posts.length > 0 ? (
-            <ul className="grid grid-cols-2 gap-5">
-              {props.blog.posts.map((post, index) => (
-                <PostCard
-                  page={`${props.blog.sub_domain}/${post.slug}`}
-                  data={post}
-                  index={index}
-                  key={index}
-                />
-              ))}
-            </ul>
-          ) : (
-            <></>
-          )}
-        </WidthConstraint> */}
       </div>
     </>
   );

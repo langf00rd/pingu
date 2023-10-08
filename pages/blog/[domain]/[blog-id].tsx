@@ -6,7 +6,6 @@ import Footer from "@/components/footers/Footer";
 import { IServerSideProps, IPost } from "@/types";
 import prisma from "@/prisma";
 import { Posts } from "@/components/tabs/Posts/[domain]";
-import Meta from "@/components/Meta";
 import { useParams } from "next/navigation";
 
 const TABS = ["Drafts", "Analytics", "Settings"];
