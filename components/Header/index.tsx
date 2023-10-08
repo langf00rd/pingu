@@ -6,8 +6,9 @@ import { useRouter } from "next/router";
 import { useStore } from "@/config/store";
 import { AnimatePresence } from "framer-motion";
 import { ReactNode } from "react";
-import CreateSiteDialog from "../CreateSiteDialog";
-import MainAside from "../MainAside";
+import MainAside from "../aside/MainAside";
+import { ROUTES } from "@/routes";
+import Link from "next/link";
 
 export default function Header(props: {
   title?: string;
@@ -34,7 +35,11 @@ export default function Header(props: {
                 </motion.div>
               )}
             </AnimatePresence>
-            {!pathname.split("/").includes("write") && <CreateSiteDialog />}
+            {!pathname.split("/").includes("write") && (
+              <Link href={ROUTES.new}>
+                <Button>Create a new blog</Button>
+              </Link>
+            )}
           </div>
           <UserButton />
         </div>

@@ -8,8 +8,13 @@ import prisma from "@/prisma";
 import { Posts } from "@/components/tabs/Posts/[domain]";
 import { useParams } from "next/navigation";
 import AuthLayout from "@/layouts/authLayout";
+import { Library, Settings2, TrendingUp } from "lucide-react";
 
-const TABS = ["Drafts", "Analytics", "Settings"];
+const TABS: { label: string; icon: JSX.Element }[] = [
+  { label: "Posts", icon: <Library size={17} /> },
+  { label: "Analytics", icon: <TrendingUp size={17} /> },
+  { label: "Settings", icon: <Settings2 size={17} /> },
+];
 
 export async function getServerSideProps(context: IServerSideProps) {
   const posts = await prisma.post.findMany({
@@ -48,16 +53,17 @@ export default function Site(props: { posts: IPost[] }): JSX.Element {
           <Header>
             <ul className="flex items-center justify-center relative z-10">
               {TABS.map((tab) => (
-                <li key={tab}>
+                <li key={tab.label}>
                   <Button
                     onClick={() => setSelectedTab(tab)}
                     variant="ghost"
                     size="md"
-                    className={`w-[120px] h-[70px] border-transparent border-b-2 rounded-none ${
+                    className={`w-[120px] h-[70px] border-transparent flex items-center space-x-1 border-b-2 rounded-none ${
                       selectedTab === tab && "border-primary text-primary"
                     }`}
                   >
-                    <p className="text-center">{tab}</p>
+                    {tab.icon}
+                    <p className="text-center">{tab.label}</p>
                   </Button>
                 </li>
               ))}

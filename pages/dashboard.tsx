@@ -1,7 +1,7 @@
-import BlogCard from "@/components/BlogCard";
+import BlogCard from "@/components/cards/BlogCard";
 import CreateSiteDialog from "@/components/CreateSiteDialog";
 import Header from "@/components/Header";
-import Loader from "@/components/Loader";
+import Loader from "@/components/ui/Loader";
 import Meta from "@/components/Meta";
 import { Button } from "@/components/ui/Button";
 import AuthLayout from "@/layouts/authLayout";

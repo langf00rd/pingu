@@ -1,5 +1,5 @@
 import Meta from "@/components/Meta";
-import WriteAside from "@/components/WriteAside";
+import WriteAside from "@/components/aside/WriteAside";
 import { useStore } from "@/config/store";
 import AuthLayout from "@/layouts/authLayout";
 import WidthConstraint from "@/layouts/widthConstraint";

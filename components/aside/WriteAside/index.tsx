@@ -1,10 +1,10 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronsLeft } from "lucide-react";
-import { Button } from "../ui/Button";
+import { Button } from "../../ui/Button";
 import { useStore } from "@/config/store";
 import { useState } from "react";
 import { Field, Form, Formik } from "formik";
-import { Label } from "../ui/Label";
+import { Label } from "../../ui/Label";
 import axios from "axios";
 import { toast } from "sonner";
 import { FormPost, IPost } from "@/types";
