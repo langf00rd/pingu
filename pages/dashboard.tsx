@@ -4,7 +4,7 @@ import Header from "@/components/Header";
 import Loader from "@/components/Loader";
 import Meta from "@/components/Meta";
 import { Button } from "@/components/ui/Button";
-import AuthLayout from "@/layouts/auth.layout";
+import AuthLayout from "@/layouts/authLayout";
 import { IBlog } from "@/types";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";

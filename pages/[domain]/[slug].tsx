@@ -9,36 +9,19 @@ import Image from "next/image";
 import { useParams } from "next/navigation";
 import { useRouter } from "next/router";
 
-export async function getServerSideProps(context: IServerSideProps) {
-  const domain = context.params.domain;
-  const slug = context.params.slug;
-  const post = await prisma.post.findFirst({
-    where: {
-      slug: {
-        equals: slug,
-      },
-      AND: [{ sub_domain: { equals: domain } }],
-    },
-  });
-  console.log(post);
-  return {
-    props: { post: JSON.parse(JSON.stringify(post)) },
-  };
-}
-
 export default function ReadPost(props: { post: IPost }): JSX.Element {
   const params = useParams();
   const { push } = useRouter();
-  console.log(props);
 
-  if (!props.post) {
-    return <h1>Post does not exist</h1>;
-  }
+  // if (!props.post) {
+  //   return <h1>Post does not exist</h1>;
+  // }
+
+  if (!props.post || !params) return <></>;
 
   return (
     <>
       <Meta
-        // image={props.post.meta.image ?? props.post.banner}
         title={props.post.meta.title}
         description={props.post.meta.description}
         imageAlt={`${props.post.meta.title} banner image`}
@@ -89,4 +72,28 @@ export default function ReadPost(props: { post: IPost }): JSX.Element {
       <PublicFooter blogName={`${params.domain.toString().replaceAll("-", " ")} blog`} />
     </>
   );
+}
+
+export async function getStaticPaths() {
+  return {
+    paths: ["/[domain]/[slug]"],
+    fallback: true,
+  };
+}
+
+export async function getStaticProps(context: IServerSideProps) {
+  const domain = context.params.domain;
+  const slug = context.params.slug;
+  const post = await prisma.post.findFirst({
+    where: {
+      slug: {
+        equals: slug,
+      },
+      AND: [{ sub_domain: { equals: domain } }],
+    },
+  });
+  console.log(post);
+  return {
+    props: { post: JSON.parse(JSON.stringify(post)) },
+  };
 }

@@ -6,24 +6,8 @@ import prisma from "@/prisma";
 import { IServerSideProps } from "@/types";
 import Link from "next/link";
 
-export async function getServerSideProps(context: IServerSideProps) {
-  const domain = context.params.domain;
-  const blog = await prisma.blog.findFirst({ where: { sub_domain: { equals: domain } } });
-  const posts = await prisma.post.findMany({
-    where: {
-      parent_id: {
-        equals: blog?.id,
-      },
-    },
-  });
-  const _ = JSON.parse(JSON.stringify({ ...blog, posts }));
-  return {
-    props: { blog: _ },
-  };
-}
-
 export default function Blog(props: { blog: BlogProps }): JSX.Element {
-  console.log(props);
+  if (!props.blog) return <></>;
   return (
     <>
       <Meta
@@ -70,4 +54,27 @@ export default function Blog(props: { blog: BlogProps }): JSX.Element {
       </div>
     </>
   );
+}
+
+export async function getStaticPaths() {
+  return {
+    paths: ["/[domain]"],
+    fallback: true,
+  };
+}
+
+export async function getStaticProps(context: IServerSideProps) {
+  const domain = context.params.domain;
+  const blog = await prisma.blog.findFirst({ where: { sub_domain: { equals: domain } } });
+  const posts = await prisma.post.findMany({
+    where: {
+      parent_id: {
+        equals: blog?.id,
+      },
+    },
+  });
+  const _ = JSON.parse(JSON.stringify({ ...blog, posts }));
+  return {
+    props: { blog: _ },
+  };
 }
