@@ -7,7 +7,7 @@ import { IServerSideProps, IPost } from "@/types";
 import prisma from "@/prisma";
 import { Posts } from "@/components/tabs/Posts/[domain]";
 import { useParams } from "next/navigation";
-import AuthLayout from "@/layouts/auth.layout";
+import AuthLayout from "@/layouts/authLayout";
 
 const TABS = ["Drafts", "Analytics", "Settings"];
 
