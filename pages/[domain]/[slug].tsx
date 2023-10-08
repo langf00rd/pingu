@@ -37,7 +37,7 @@ export default function ReadPost(props: { post: IPost }): JSX.Element {
             go to blog
           </Button>
           <h1 className="text-3xl">{props.post.title}</h1>
-          <ul className="flex items-center">
+          <ul className="flex items-center flex-wrap gap-y-3">
             <li className="flex items-center space-x-1">
               <Image
                 width={25}

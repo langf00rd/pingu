@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/Button";
 import WidthConstraint from "@/layouts/widthConstraint";
-import { generate12ByteID } from "@/lib/utils";
 import { ROUTES } from "@/routes";
 import Link from "next/link";
 
@@ -16,11 +15,7 @@ export default function PublicFooter(props: { blogName?: string }): JSX.Element 
             </p>
           </li>
           <li>
-            <Link
-              rel="noreferrer"
-              target="_blank"
-              href={`${ROUTES.publishedURL}${ROUTES.new}/${generate12ByteID()}`}
-            >
+            <Link rel="noreferrer" target="_blank" href={ROUTES.new}>
               <Button>Publish with pingu</Button>
             </Link>
           </li>

@@ -1,4 +1,4 @@
-import { PaintBucketIcon, Globe, Workflow } from "lucide-react";
+import { PaintBucketIcon, Globe, Workflow, Code } from "lucide-react";
 
 export const BLOG_SETTINGS_TABS = [
   {
@@ -7,6 +7,7 @@ export const BLOG_SETTINGS_TABS = [
   },
   { label: "Domains", icon: <Globe size={18} /> },
   { label: "Integration", icon: <Workflow size={18} /> },
+  { label: "Developer", icon: <Code size={18} /> },
 ];
 
 export const BLOG_THEMES: { name: string; image: string; isPremium?: boolean }[] = [
