@@ -8,7 +8,7 @@ export default function Auth() {
   return (
     <>
       <Meta title="pingu - Authentication" />
-      <div className="w-screen h-screen flex items-center justify-center flex-col space-y-10 dotted-bg">
+      <div className="w-screen h-screen flex items-center justify-center flex-col space-y-10 dotted-bg px-5">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
