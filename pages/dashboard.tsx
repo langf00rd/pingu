@@ -8,6 +8,8 @@ import AuthLayout from "@/layouts/authLayout";
 import { IBlog } from "@/types";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import Link from "next/link";
+import { ROUTES } from "@/routes";
 
 export default function Dashboard(): JSX.Element {
   const { isLoading, isError, data } = useQuery(["fetch user blogs"], async () => {
@@ -38,9 +40,9 @@ export default function Dashboard(): JSX.Element {
                 <p className="text-2xl">
                   It&apos;s quiet here. You seem to have no blogs
                 </p>
-                <CreateSiteDialog>
+                <Link href={ROUTES.new}>
                   <Button variant="outline">Create a blog</Button>
-                </CreateSiteDialog>
+                </Link>
               </div>
             )}
           </>
