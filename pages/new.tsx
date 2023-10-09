@@ -67,7 +67,7 @@ export default function New(): JSX.Element {
         animate={{ opacity: 1, y: 0 }}
         className="dotted-bg flex items-center justify-center px-5"
       >
-        <WidthConstraint className="p-10 max-w-[700px] space-y-5 md:shadow-xl md:bg-white md:border md:rounded-3xl">
+        <WidthConstraint className="md:p-10 p-0 max-w-[700px] space-y-5 md:shadow-xl md:bg-white md:border md:rounded-3xl">
           <h2 className="text-3xl">
             {isBlogCreated ? "You are all set! 🎉" : "Create a blog"}
           </h2>
