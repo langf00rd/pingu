@@ -85,7 +85,9 @@ b {
     ),
     radial-gradient(#5e00f631 0.9500000000000001px, #ffffff 0.9500000000000001px);
   background-size: 38px 38px;
-  background-position: 0 0, 19px 19px;
+  background-position:
+    0 0,
+    19px 19px;
 }
 
 .post-content pre {
@@ -96,7 +98,7 @@ b {
 }
 
 ::selection {
-  @apply bg-gray-100;
+  @apply bg-primary text-white;
 }
 
 .loader {

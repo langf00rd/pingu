@@ -2,13 +2,18 @@ import Meta from "@/components/Meta";
 import { Button } from "@/components/ui/Button";
 import { ROUTES } from "@/routes";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 export default function Auth() {
   return (
     <>
       <Meta title="pingu - Authentication" />
       <div className="w-screen h-screen flex items-center justify-center flex-col space-y-10 dotted-bg">
-        <main className="border p-5 rounded-2xl shadow-xl w-full max-w-[400px] text-center space-y-8 bg-white">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="border p-5 rounded-2xl shadow-xl w-full max-w-[400px] text-center space-y-8 bg-white"
+        >
           <div className="space-y-1">
             <h2 className="text-2xl">Welcome to pingu</h2>
             <p>Some cool text should come here</p>
@@ -27,7 +32,7 @@ export default function Auth() {
               </Link>
             </li>
           </ul>
-        </main>
+        </motion.div>
         <small className="max-w-sm text-center">
           By signing up or creating an account, you acknowledge that you have read and
           understood our &nbsp;
