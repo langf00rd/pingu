@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import Image from "next/image";
 import { Badge } from "@/components/ui/Badge";
-import { BLOG_THEMES, BLOG_SETTINGS_TABS } from "@/lib/ui/nav";
+import { BLOG_THEMES, BLOG_SETTINGS_TABS } from "@/lib/constants/nav";
 import WidthConstraint from "@/layouts/widthConstraint";
 import Meta from "@/components/Meta";
 import { useParams } from "next/navigation";

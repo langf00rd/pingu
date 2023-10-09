@@ -1,4 +1,3 @@
-import CreateSiteDialog from "@/components/CreateSiteDialog";
 import DropZone from "@/components/DropZone";
 import { Label } from "@/components/ui/Label";
 import useWindow from "@/hooks/useWindow";
@@ -13,7 +12,6 @@ import { toFormikValidationSchema } from "zod-formik-adapter";
 import { z } from "zod";
 import WidthConstraint from "@/layouts/widthConstraint";
 import { Button } from "@/components/ui/Button";
-import { BlogCreateSuccessView } from "@/components/BlogCreateSuccess";
 import Link from "next/link";
 import { ArrowRight, Linkedin, Twitter } from "lucide-react";
 import Confetti from "react-confetti";
@@ -53,8 +51,8 @@ export default function New(): JSX.Element {
       })
       .catch((error) => {
         console.log(error);
-        toast.error(error.message);
-        // toast.error(error.response.data.error ?? error.message);
+        // toast.error(error.message);
+        toast.error(error.response.data.error ?? error.message);
       });
     setLoading(false);
   }

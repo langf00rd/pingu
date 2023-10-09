@@ -1,5 +1,4 @@
 import BlogCard from "@/components/cards/BlogCard";
-import CreateSiteDialog from "@/components/CreateSiteDialog";
 import Header from "@/components/Header";
 import Loader from "@/components/ui/Loader";
 import Meta from "@/components/Meta";
@@ -12,20 +11,21 @@ import Link from "next/link";
 import { ROUTES } from "@/routes";
 
 export default function Dashboard(): JSX.Element {
-  const { isLoading, isError, data } = useQuery(["fetch user blogs"], async () => {
+  const { isLoading, isError, error, data } = useQuery(["fetch user blogs"], async () => {
     const blog = await axios.get("/api/blog/fetch-all");
     return (blog.data.data as IBlog[]) ?? [];
   });
 
   console.log(data);
+  console.log({ isError, error });
 
   return (
     <AuthLayout>
       <Meta title="pingu - My blogs" />
       <div className="dotted-bg">
         <Header title="My blogs" />
-        {isError && <p>An error occured loading your blogs</p>}
-        {isLoading ? (
+        {isError && !isLoading && <p>An error occured loading your blogs</p>}
+        {isLoading && !isError ? (
           <Loader />
         ) : (
           <>

@@ -21,6 +21,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       res.status(400).json({ error: validation.error.issues });
     } else {
       console.log(validation.data);
+
       const blogExists = await prisma.blog.findFirst({
         where: {
           sub_domain: {
@@ -28,8 +29,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           },
         },
       });
+      console.log({ blogExists });
       if (blogExists) {
-        res.status(400).send({ error: "Subdomain is taken" });
+        res.status(400).json({ error: "Subdomain is taken" });
       } else {
         await prisma.blog.create({ data: { ...validation.data } });
         res.status(200).send({ message: "Blog created successfully!" });

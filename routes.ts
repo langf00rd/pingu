@@ -11,5 +11,8 @@ export const ROUTES = {
   signIn: "/sign-in",
   signUp: "/sign-up",
   publishedURL: "https://pingu-blog.vercel.app",
-  socials: { twitter: "https://x.com/pingulabs_" },
+  socials: {
+    twitter: "https://x.com/pingulabs_",
+    github: "https://github.com/langford-dev/pingu",
+  },
 };
