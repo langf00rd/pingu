@@ -9,6 +9,7 @@ import { Posts } from "@/components/tabs/Posts/[domain]";
 import { useParams } from "next/navigation";
 import AuthLayout from "@/layouts/authLayout";
 import { Library, Settings2, TrendingUp } from "lucide-react";
+import Analytics from "@/components/tabs/Analytics";
 
 const TABS: { label: string; icon: JSX.Element }[] = [
   { label: "Posts", icon: <Library size={17} /> },
@@ -39,6 +40,8 @@ export default function Site(props: { posts: IPost[] }): JSX.Element {
     switch (selectedTab) {
       case TABS[0]:
         return <Posts posts={props.posts} />;
+      case TABS[1]:
+        return <Analytics />;
       case TABS[2]:
         return <BlogSettings />;
       default:
