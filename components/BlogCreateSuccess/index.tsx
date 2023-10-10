@@ -20,7 +20,7 @@ export function BlogCreateSuccessView(props: { uid: string }): JSX.Element {
         </li>
       </ul>
       <DialogFooter>
-        <Link href={`${ROUTES.blog}/${props.uid}`}>
+        <Link href={`${ROUTES.pub}/${props.uid}`}>
           <Button className="w-max">Next</Button>
         </Link>
       </DialogFooter>

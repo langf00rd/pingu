@@ -13,9 +13,7 @@ export default function ReadPost(props: { post: IPost }): JSX.Element {
   const params = useParams();
   const { push } = useRouter();
 
-  // if (!props.post) {
-  //   return <h1>Post does not exist</h1>;
-  // }
+  // return a 404 component if post does not exist
 
   if (!props.post || !params) return <></>;
 
@@ -26,7 +24,7 @@ export default function ReadPost(props: { post: IPost }): JSX.Element {
         description={props.post.meta.description}
         imageAlt={`${props.post.meta.title} banner image`}
       />
-      <WidthConstraint>
+      <WidthConstraint className="px-5 mb-10">
         <div className="py-10 space-y-10">
           <Button
             onClick={() => push(`/${params.domain}`)}
