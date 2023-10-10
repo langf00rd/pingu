@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export default function PublicFooter(props: { blogName?: string }): JSX.Element {
   return (
-    <footer className="border-t text-center text-sm space-y-3 py-3 mt-20">
+    <footer className="text-center text-sm space-y-3 py-3">
       <WidthConstraint className="max-w-[1200px]">
         <ul className="flex flex-col md:flex-row items-center md:justify-between gap-5">
           <li>

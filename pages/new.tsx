@@ -65,9 +65,9 @@ export default function New(): JSX.Element {
         animate={{ opacity: 1, y: 0 }}
         className="dotted-bg flex items-center justify-center px-5"
       >
-        <WidthConstraint className="md:p-10 p-0 max-w-[700px] space-y-5 md:shadow-xl md:bg-white md:border md:rounded-3xl">
+        <WidthConstraint className="md:p-10 p-0 max-w-[700px] space-y-5 md:bg-white md:border md:rounded-xl">
           <h2 className="text-3xl">
-            {isBlogCreated ? "You are all set! 🎉" : "Create a blog"}
+            {isBlogCreated ? "You are all set! 🎉" : "Create a publication"}
           </h2>
           {!isBlogCreated ? (
             <Formik
@@ -94,7 +94,7 @@ export default function New(): JSX.Element {
                       id="name"
                       name="name"
                       placeholder="My personal blog"
-                      className={`w-full outline-none bg-gray-50 p-2 rounded-md border transition-colors ${
+                      className={`w-full outline-none bg-slate-50 text-xm text-black p-2 rounded-md border transition-colors ${
                         touched.name && errors.name && "border-red-300"
                       }`}
                     />
@@ -107,7 +107,7 @@ export default function New(): JSX.Element {
                       as="textarea"
                       id="description"
                       name="description"
-                      className={`w-full outline-none bg-gray-50 p-2 rounded-md border transition-colors ${
+                      className={`w-full outline-none bg-slate-50 text-xm text-black p-2 rounded-md border transition-colors ${
                         touched.description && errors.description && "border-red-300"
                       }`}
                     />
@@ -123,7 +123,7 @@ export default function New(): JSX.Element {
                       </small>
                     </div>
                     <div
-                      className={` w-full outline-none bg-gray-50 p-2 rounded-md border transition-colors flex items-center  ${
+                      className={` w-full outline-none bg-slate-50 text-xm text-black p-2 rounded-md border transition-colors flex items-center  ${
                         touched.sub_domain && errors.sub_domain && "border-red-300"
                       }`}
                     >
@@ -151,7 +151,7 @@ export default function New(): JSX.Element {
                       Cancel
                     </Button>
                     <Button disabled={loading} type="submit">
-                      {loading ? "loading..." : "Create blog"}
+                      {loading ? "loading..." : "Create a publication"}
                     </Button>
                   </div>
                 </Form>
@@ -176,7 +176,7 @@ export default function New(): JSX.Element {
                   </li>
                 </ul>
                 <div>
-                  <Link href={`${ROUTES.blog}/${subDomain}/${id}`}>
+                  <Link href={`${ROUTES.pub}/${subDomain}/${id}`}>
                     <Button className="w-max gap-2">
                       Go to blog
                       <ArrowRight size={18} />

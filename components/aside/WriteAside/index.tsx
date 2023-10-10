@@ -36,7 +36,7 @@ export default function WriteAside(props: {
       sub_title: props.subtitle,
       tags: ["tag #1", "tag #2"],
       id: params["id"].toString(),
-      parent_id: params["blog-id"].toString(),
+      parent_id: params["pub-id"].toString(),
       slug: props.title
         .replace(/[^a-zA-Z0-9]/g, "-")
         .toLowerCase()

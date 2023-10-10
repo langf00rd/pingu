@@ -58,13 +58,13 @@ export function BlogSettings(): JSX.Element {
     <>
       <Meta title={`${params.domain.toString().replaceAll("-", " ")} - Settings`} />
       <WidthConstraint>
-        <div className="flex items-start md:flex-row flex-col md:space-x-10">
-          <ul className="md:grid flex gap-5 flex-1 md:sticky md:top-[100px] w-full mb-5">
+        <div className="flex items-start md:flex-row flex-col md:space-x-10 space-y-5">
+          <ul className="md:grid flex justify-center gap-5 flex-1 md:sticky md:top-[100px] w-full bg-white md:border-none border-b overflow-x-scroll py-3 px-10">
             {BLOG_SETTINGS_TABS.map((tab, index) => (
               <li
                 key={index}
                 onClick={() => setSelectedTab(tab)}
-                className={`cursor-pointer hover:text-primary transition-colors flex items-center space-x-1 ${
+                className={`cursor-pointer hover:text-primary transition-colors flex items-center space-x-1 md:first:ml-0 first:ml-10 ${
                   selectedTab === tab && "text-primary"
                 }`}
               >
@@ -73,7 +73,7 @@ export function BlogSettings(): JSX.Element {
               </li>
             ))}
           </ul>
-          <div className="flex-[5] w-full">{tabViews()}</div>
+          <div className="flex-[5] w-full px-5">{tabViews()}</div>
         </div>
       </WidthConstraint>
     </>

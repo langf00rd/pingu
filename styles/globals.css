@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  @apply text-[#666] overflow-x-hidden;
+  @apply text-[#808080] overflow-x-hidden;
 }
 
 li {

@@ -5,7 +5,7 @@ export default function WidthConstraint(props: {
   className?: string;
 }): JSX.Element {
   return (
-    <div className={cn("p-5 w-full max-w-4xl mx-auto", props.className)}>
+    <div className={cn("h-full w-full max-w-4xl mx-auto", props.className)}>
       {props.children}
     </div>
   );
