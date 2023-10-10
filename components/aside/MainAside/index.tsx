@@ -1,19 +1,12 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { ROUTES } from "@/routes";
-import { BookOpenIcon, ChevronsLeft, Folder, Settings } from "lucide-react";
+import { ChevronsLeft } from "lucide-react";
 import { Button } from "../../ui/Button";
 import { useStore } from "@/config/store";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import Footer from "../../footers/Footer";
-import CreateSiteDialog from "../../CreateSiteDialog";
-
-const NAV_LINKS = [
-  { label: "My blogs", page: "/dashboard", icon: <Folder /> },
-  { label: "Settings", page: "/settings", icon: <Settings /> },
-  { label: "Docs", page: "/documentation", icon: <BookOpenIcon /> },
-];
+import { MAIN_ASIDE_NAV_LINKS } from "@/lib/constants/nav";
 
 export default function MainAside(props: { show?: boolean }): JSX.Element {
   const { pathname } = useRouter();
@@ -51,7 +44,7 @@ export default function MainAside(props: { show?: boolean }): JSX.Element {
             </div>
             <nav>
               <ul className="space-y-10">
-                {NAV_LINKS.map((link, index) => (
+                {MAIN_ASIDE_NAV_LINKS.map((link, index) => (
                   <li key={index}>
                     <Link
                       href={link.page}
@@ -69,9 +62,8 @@ export default function MainAside(props: { show?: boolean }): JSX.Element {
           </div>
           <div>
             <Link href={ROUTES.new}>
-              <Button className="w-full">Create a new blog</Button>
+              <Button className="w-full">Create a publication</Button>
             </Link>
-            <Footer />
           </div>
         </motion.aside>
       )}

@@ -4,7 +4,7 @@ export const ROUTES = {
   write: "/write",
   new: "/new",
   terms: "/terms",
-  blog: "/blog",
+  pub: "/pub",
   dashboard: "/dashboard",
   settings: "/settings",
   feedback: "/feedback",

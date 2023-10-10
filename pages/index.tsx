@@ -17,7 +17,7 @@ export default function Home() {
           <h3 className="text-xl">It&apos;s simple:</h3>
           <ul className="flex items-center flex-wrap gap-5">
             <li className="bg-gray-50 p-5 rounded-2xl">
-              <p className="md:text-xl">01 Create blog</p>
+              <p className="md:text-xl">01 Create a publication</p>
             </li>
             <ArrowRightIcon className="hidden md:block" />
             <li className="bg-gray-50 p-5 rounded-2xl">

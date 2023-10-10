@@ -60,7 +60,7 @@ export default function Write(props: { data: IPost }) {
             subtitle={subtitle}
             title={title}
           />
-          <WidthConstraint className="max-w-[1050px] mt-10 space-y-5">
+          <WidthConstraint className="max-w-[1050px] mt-10 space-y-5 relative">
             <input
               value={title}
               className="text-4xl font-[600] text-black outline-none w-full tracking-tight"
