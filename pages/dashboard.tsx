@@ -17,9 +17,6 @@ export default function Dashboard(): JSX.Element {
     return (blog.data.data as IBlog[]) ?? [];
   });
 
-  console.log(data);
-  console.log({ isError, error });
-
   return (
     <>
       <Meta title="pingu - My blogs" />

@@ -19,8 +19,7 @@ export default function Site(props: { posts: IPost[] }): JSX.Element {
   const params = useParams();
   const [selectedTab, setSelectedTab] = useState(PUB_TABS[0]);
 
-  console.log(params);
-
+ 
   function tabViews(): JSX.Element {
     switch (selectedTab) {
       case PUB_TABS[0]:

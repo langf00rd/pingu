@@ -25,7 +25,6 @@ export default function WriteAside(props: {
 
   async function onSubmitForm(values: FormPost) {
     setLoading(true);
-    console.log(values);
     const data: IPost = {
       meta: {
         title: values.meta.title,

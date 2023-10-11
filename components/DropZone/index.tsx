@@ -15,8 +15,6 @@ export default function DropZone(props: {
   const [imageURL, setImageURL] = useState(props.value ?? "");
   const [imageBlob, setImageBlob] = useState("");
 
-  console.log(props.value);
-
   return (
     <Dropzone
       onDrop={async (acceptedFiles) => {

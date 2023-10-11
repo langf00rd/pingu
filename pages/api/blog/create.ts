@@ -5,8 +5,7 @@ import { getAuth } from "@clerk/nextjs/server";
 import { clerkClient } from "@clerk/nextjs";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  console.log(req.body);
-  try {
+   try {
     const { userId } = getAuth(req);
     if (!userId) {
       res.status(401).json({ error: "Unauthorized" });
@@ -29,8 +28,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           },
         },
       });
-      console.log({ blogExists });
-      if (blogExists) {
+       if (blogExists) {
         res.status(400).json({ error: "Subdomain is taken" });
       } else {
         await prisma.blog.create({ data: { ...validation.data } });

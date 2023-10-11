@@ -40,12 +40,10 @@ export default function New(): JSX.Element {
   async function onSubmitForm(values: Blog_) {
     const body = { ...values } as IBlog;
     setSubDomain(values.sub_domain);
-    console.log(body);
     setLoading(true);
     await axios
       .post("/api/blog/create", body)
       .then((res) => {
-        console.log(res);
         toast.success(res.data.message);
         setIsBlogCreated(true);
       })

@@ -10,8 +10,6 @@ import Link from "next/link";
 import { toast } from "sonner";
 
 export default function Blog(props: { blog: BlogProps }): JSX.Element {
-  console.log(props);
-
   function subscribeToNewsLetter() {
     toast.success(`You have subscribed to ${props.blog.name}'s newsletter`);
   }
