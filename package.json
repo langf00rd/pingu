@@ -27,7 +27,7 @@
     "framer-motion": "^10.16.4",
     "lucide-react": "^0.284.0",
     "next": "latest",
-    "novel": "^0.1.22",
+    "novel": "^0.2.3",
     "react": "latest",
     "react-confetti": "^6.1.0",
     "react-dom": "latest",
